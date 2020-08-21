@@ -11,8 +11,6 @@
 # =============
 alias ..='cd ..'
 
-alias t="tig status"
-alias tigs="tig status" #old habits don't die
 alias d='git diff' 
 alias vi='vim'
 
@@ -41,7 +39,6 @@ alias cdr='cd $(git rev-parse --show-toplevel)'
 alias duh='du -sh -h * .[^.]* 2> /dev/null | sort -h'
 
 # build and test
-alias bt='go build ./... && go test ./...'
 alias hc='hub compare'
 alias hp='hub pull-request'
 alias b='git branch'
@@ -289,8 +286,17 @@ function switchgo() {
 #    PLUGINS
 # ===================
 
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [ ! -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+	source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+if [ ! -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+	source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+else 
+	source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
 # ===================
 #    THIRD PARTY
