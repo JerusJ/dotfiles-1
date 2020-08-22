@@ -1,4 +1,4 @@
-all: sync
+all: sync mouse
 
 sync:
 	mkdir -p ~/.config/alacritty
@@ -16,6 +16,10 @@ sync:
 	# don't show last login message
 	touch ~/.hushlogin
 
+mouse:
+	 defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
+
 clean:
 	rm -f ~/.vimrc 
 	rm -f ~/.config/nvim/init.vim
@@ -28,4 +32,4 @@ clean:
 	rm -f ~/.gitconfig
 	rm -f ~/.agignore
 
-.PHONY: all clean sync build run kill
+.PHONY: all clean sync build run kill mouse

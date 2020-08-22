@@ -9,6 +9,7 @@
 # =============
 #    ALIAS
 # =============
+alias listen_mic='sox -d -d'
 alias ..='cd ..'
 
 alias d='git diff' 

@@ -1,9 +1,12 @@
+# Taps
 tap "aybabtme/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+
+# CLI
 brew "aria2"
 brew "awscli"
 brew "aybabtme/tap/dorepl"
@@ -60,3 +63,14 @@ brew "z"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "zsh"
+
+# GUI
+cask "alfred"
+cask "bettertouchtool"
+cask "iterm2"
+cask "slack"
+cask "spotify"
+cask "vagrant"
+cask "virtualbox"
+cask "visual-studio-code"
+cask "vlc"
