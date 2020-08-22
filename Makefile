@@ -39,5 +39,11 @@ clean:
 	rm -f ~/.git-prompt.sh
 	rm -f ~/.gitconfig
 	rm -f ~/.agignore
+ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
+	brew cleanup
+else
+	echo "Current platform: ${CUR_PLATFORM}, is not supported. Require: ${MAC_PLATFORM}"
+endif
+
 
 .PHONY: all clean sync build run kill mouse

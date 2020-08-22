@@ -9,7 +9,7 @@
 # =============
 #    ALIAS
 # =============
-alias listen_mic='sox -d -d'
+alias cd_code="cd $HOME/Documents/code"
 alias ..='cd ..'
 
 alias d='git diff' 
