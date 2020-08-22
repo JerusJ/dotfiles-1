@@ -1,4 +1,7 @@
-all: sync mouse
+CUR_PLATFORM := $(shell uname)
+MAC_PLATFORM := Darwin
+
+all: sync mac
 
 sync:
 	mkdir -p ~/.config/alacritty
@@ -16,8 +19,13 @@ sync:
 	# don't show last login message
 	touch ~/.hushlogin
 
-mouse:
-	 defaults write .GlobalPreferences com.apple.mouse.scaling -1
+mac:
+ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
+	defaults write .GlobalPreferences com.apple.mouse.scaling -1
+	brew bundle
+else
+	echo "Current platform: ${CUR_PLATFORM}, is not supported. Require: ${MAC_PLATFORM}"
+endif
 
 
 clean:

@@ -5,10 +5,6 @@ My personal dotfiles
 
 # On a new machine
 
-```
-# install all brew dependencies
-brew bundle
+##  Install all Dependencies and Copy Dotfiles
 
-# copy dotfiles to the appropriate places
-make
-```
+`make`
