@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'test-kitchen'
+gem 'librarian-puppet'
+gem 'kitchen-docker'
+gem 'kitchen-inspec'
+gem 'kitchen-salt'
+gem 'kitchen-puppet'
+gem 'kitchen-ansible'
+gem 'concurrent-ruby'

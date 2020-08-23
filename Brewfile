@@ -76,11 +76,13 @@ brew "z"
 brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
+
 # GUI
 cask "alfred"
 cask "bettertouchtool"
 cask "chef-workstation"
 cask "iterm2"
+cask "obs"
 cask "slack"
 cask "spotify"
 cask "vagrant"

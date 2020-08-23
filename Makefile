@@ -1,5 +1,6 @@
 CUR_PLATFORM := $(shell uname)
 MAC_PLATFORM := Darwin
+MAC_RUBY_VERSION := 2.7.1
 
 all: sync mac
 
@@ -24,7 +25,16 @@ ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1
 	brew bundle
 else
-	echo "Current platform: ${CUR_PLATFORM}, is not supported. Require: ${MAC_PLATFORM}"
+	echo "Current platform: ${CUR_PLATFORM}, is not supported. Require: ${MAC_PLATFORM}, skipping..."
+endif
+
+ruby:
+ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
+	rbenv install ${MAC_RUBY_VERSION}
+	rbenv global ${MAC_RUBY_VERSION}
+	bundle install
+else
+	echo "Current platform: ${CUR_PLATFORM}, is not supported. Require: ${MAC_PLATFORM}, skipping..."
 endif
 
 
@@ -41,8 +51,6 @@ clean:
 	rm -f ~/.agignore
 ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 	brew cleanup
-else
-	echo "Current platform: ${CUR_PLATFORM}, is not supported. Require: ${MAC_PLATFORM}"
 endif
 
 

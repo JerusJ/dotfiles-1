@@ -5,16 +5,16 @@
         "revision": "a140c63978a0a7362b301e9c58d47e1f421ac194"
       },
       "homebrew/bundle": {
-        "revision": "9f44499b36fd4dca63d804ad49af6bff9d6c5588"
+        "revision": "f3e71a7f18132d734bd8e9167f1481fefe97acb0"
       },
       "homebrew/cask": {
-        "revision": "831a04ca402cbd152489f5c45d14166dce5fcfc9"
+        "revision": "98344879aff9b8423cb03ef540e3cfc6c49606ff"
       },
       "homebrew/cask-versions": {
-        "revision": "86f7b63da11cf516161818825f3f5cba4ece0cb6"
+        "revision": "a0732a8b47f7717643669ef6a82722aed98cce43"
       },
       "homebrew/core": {
-        "revision": "6d7a1089f3e7de957c616460c337ef5cf676a44a"
+        "revision": "f10aeb288921207816d62159d8442238001a81be"
       },
       "homebrew/services": {
         "revision": "a2c3e50e4d1ac0e5f948f7d7fe17281fe1d18f32"
@@ -43,22 +43,22 @@
         }
       },
       "awscli": {
-        "version": "2.0.40",
+        "version": "2.0.42",
         "bottle": {
           "cellar": "/usr/local/Cellar",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.40.catalina.bottle.tar.gz",
-              "sha256": "370781c2b9a2532039f0c3c219ac8a2e3f11ab5aa89fe3883b6dc41e1c51d56b"
+              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.42.catalina.bottle.tar.gz",
+              "sha256": "4d036dee1f19568f74cfd85874ef49570f9b1801a0637883ccfb63736dfd4a5b"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.40.mojave.bottle.tar.gz",
-              "sha256": "4139c230327c6a771c13881e369e83fb256cf7a2f7e962db2f9bb176d3444f96"
+              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.42.mojave.bottle.tar.gz",
+              "sha256": "fd7e99234056b89cd56fbd4c5206b69bab6eb1d73459637086fb3bcfa3e3588e"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.40.high_sierra.bottle.tar.gz",
-              "sha256": "065d2efe9ee338659d482a20cde9ba4480fd8ce6ef12fd4118c3331084930ef1"
+              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.42.high_sierra.bottle.tar.gz",
+              "sha256": "3d37c1ddab7210a802923b223f7af58ba798f61604ca61d8baac98fb3d0492c6"
             }
           }
         }
@@ -280,22 +280,22 @@
         }
       },
       "etcd": {
-        "version": "3.4.11",
+        "version": "3.4.12",
         "bottle": {
           "cellar": ":any_skip_relocation",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.11.catalina.bottle.tar.gz",
-              "sha256": "cdf13855d24f23daaaa6d9c225ee26dd4f4e2451aa31b96afb268e30c7457535"
+              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.12.catalina.bottle.tar.gz",
+              "sha256": "e64dd2aa6a4f8a3b4476b16a74fd0187a675470e3386c84041374368be8d796f"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.11.mojave.bottle.tar.gz",
-              "sha256": "84fec46f2533e5321e40f6d79fd3c272a6b378c5dc7121daeb7adc6da6cf1a23"
+              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.12.mojave.bottle.tar.gz",
+              "sha256": "ba7f5fb7daa1e20b167983ecf293c611c5bdb3a5acb0cf1cb1cfd60e19471213"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.11.high_sierra.bottle.tar.gz",
-              "sha256": "f7f0bed6f9d35c13b7bbf87d767824c207ce99b938523ca7d7ad145c30f52d8e"
+              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.12.high_sierra.bottle.tar.gz",
+              "sha256": "05f9f749866691321ca6d31ceed84daabc740defe2997314e6829e832f5e1f1f"
             }
           }
         }
@@ -1384,6 +1384,27 @@
             }
           }
         }
+      },
+      "telnet": {
+        "version": "63",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/telnet-63.catalina.bottle.tar.gz",
+              "sha256": "7435a9fd2515158762a85197a4ad7141e430383e185e002da169dbbb638c952f"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/telnet-63.mojave.bottle.tar.gz",
+              "sha256": "d5009f496dc6cf0c13b936996f98b91b0f12733ea9462843b56a39fc53b20fe0"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/telnet-63.high_sierra.bottle.tar.gz",
+              "sha256": "af38f3c6dd4ff5eda2248671958e66595b39e74cdeecca52af4efb495bc659a7"
+            }
+          }
+        }
       }
     },
     "cask": {
@@ -1446,6 +1467,12 @@
         "options": {
           "full_name": "chef-workstation"
         }
+      },
+      "obs": {
+        "version": "25.0.8",
+        "options": {
+          "full_name": "obs"
+        }
       }
     }
   },
@@ -1454,7 +1481,7 @@
       "mojave": {
         "HOMEBREW_VERSION": "2.4.13",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "6d7a1089f3e7de957c616460c337ef5cf676a44a",
+        "Homebrew/homebrew-core": "f10aeb288921207816d62159d8442238001a81be",
         "CLT": "10.3.0.0.1.1562985497",
         "Xcode": "10.3",
         "macOS": "10.14.6"
