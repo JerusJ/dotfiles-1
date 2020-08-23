@@ -14,10 +14,13 @@
         "revision": "a0732a8b47f7717643669ef6a82722aed98cce43"
       },
       "homebrew/core": {
-        "revision": "f10aeb288921207816d62159d8442238001a81be"
+        "revision": "829f856a00f25f42aad5ea07aeac1db87655e31c"
       },
       "homebrew/services": {
         "revision": "a2c3e50e4d1ac0e5f948f7d7fe17281fe1d18f32"
+      },
+      "puppetlabs/puppet": {
+        "revision": "42e6a12563c32b770f7aae2c0640fcfd3744c6e0"
       }
     },
     "brew": {
@@ -1473,6 +1476,12 @@
         "options": {
           "full_name": "obs"
         }
+      },
+      "pdk": {
+        "version": "1.18.1.0",
+        "options": {
+          "full_name": "pdk"
+        }
       }
     }
   },
@@ -1481,7 +1490,7 @@
       "mojave": {
         "HOMEBREW_VERSION": "2.4.13",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "f10aeb288921207816d62159d8442238001a81be",
+        "Homebrew/homebrew-core": "829f856a00f25f42aad5ea07aeac1db87655e31c",
         "CLT": "10.3.0.0.1.1562985497",
         "Xcode": "10.3",
         "macOS": "10.14.6"
