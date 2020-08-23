@@ -1482,6 +1482,12 @@
         "options": {
           "full_name": "pdk"
         }
+      },
+      "docker": {
+        "version": "2.3.0.4,46911",
+        "options": {
+          "full_name": "docker"
+        }
       }
     }
   },
