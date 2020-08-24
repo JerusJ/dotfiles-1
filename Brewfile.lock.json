@@ -5,22 +5,25 @@
         "revision": "a140c63978a0a7362b301e9c58d47e1f421ac194"
       },
       "homebrew/bundle": {
-        "revision": "f3e71a7f18132d734bd8e9167f1481fefe97acb0"
+        "revision": "110666adad626439d950b405e4164079f8068fa5"
       },
       "homebrew/cask": {
-        "revision": "98344879aff9b8423cb03ef540e3cfc6c49606ff"
+        "revision": "3ea6c98b90ff5388f208c54c04fc37ba5c088d8a"
       },
       "homebrew/cask-versions": {
-        "revision": "a0732a8b47f7717643669ef6a82722aed98cce43"
+        "revision": "773f9035899f6e055060fa06b354e5a2740b5aa9"
       },
       "homebrew/core": {
-        "revision": "829f856a00f25f42aad5ea07aeac1db87655e31c"
+        "revision": "4e35ea19b6746b9b7efb5429125ee4c567859349"
       },
       "homebrew/services": {
         "revision": "a2c3e50e4d1ac0e5f948f7d7fe17281fe1d18f32"
       },
       "puppetlabs/puppet": {
         "revision": "42e6a12563c32b770f7aae2c0640fcfd3744c6e0"
+      },
+      "warrensbox/tap": {
+        "revision": "5459d6900ecc10a158ae7bb0de8fd2220af028b0"
       }
     },
     "brew": {
@@ -1408,6 +1411,10 @@
             }
           }
         }
+      },
+      "tfswitch": {
+        "version": "0.8.832",
+        "bottle": false
       }
     },
     "cask": {
@@ -1488,6 +1495,12 @@
         "options": {
           "full_name": "docker"
         }
+      },
+      "the-unarchiver": {
+        "version": "4.2.2,129:1590582775",
+        "options": {
+          "full_name": "the-unarchiver"
+        }
       }
     }
   },
@@ -1496,7 +1509,7 @@
       "mojave": {
         "HOMEBREW_VERSION": "2.4.13",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "829f856a00f25f42aad5ea07aeac1db87655e31c",
+        "Homebrew/homebrew-core": "4e35ea19b6746b9b7efb5429125ee4c567859349",
         "CLT": "10.3.0.0.1.1562985497",
         "Xcode": "10.3",
         "macOS": "10.14.6"
