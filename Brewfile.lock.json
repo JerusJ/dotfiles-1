@@ -14,7 +14,7 @@
         "revision": "773f9035899f6e055060fa06b354e5a2740b5aa9"
       },
       "homebrew/core": {
-        "revision": "4e35ea19b6746b9b7efb5429125ee4c567859349"
+        "revision": "9a5186e85fe82ead20bb8b64b9b758bde09a8bf9"
       },
       "homebrew/services": {
         "revision": "a2c3e50e4d1ac0e5f948f7d7fe17281fe1d18f32"
@@ -1415,6 +1415,27 @@
       "tfswitch": {
         "version": "0.8.832",
         "bottle": false
+      },
+      "pre-commit": {
+        "version": "2.7.1",
+        "bottle": {
+          "cellar": ":any",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/pre-commit-2.7.1.catalina.bottle.tar.gz",
+              "sha256": "16fedb26ac5b237eecb5ab73a2a4aef5a7f1c87cd9bb1409c523a0e00f3fa572"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/pre-commit-2.7.1.mojave.bottle.tar.gz",
+              "sha256": "ea8e2a1eedfe8a1ea1035e39601d5974ce166dee4395ceb0ea388af577b64a18"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/pre-commit-2.7.1.high_sierra.bottle.tar.gz",
+              "sha256": "a9701f56135259c2896d7fdc83bd299aedb70dbda1c909c243d899ed800a317f"
+            }
+          }
+        }
       }
     },
     "cask": {
@@ -1509,7 +1530,7 @@
       "mojave": {
         "HOMEBREW_VERSION": "2.4.13",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "4e35ea19b6746b9b7efb5429125ee4c567859349",
+        "Homebrew/homebrew-core": "9a5186e85fe82ead20bb8b64b9b758bde09a8bf9",
         "CLT": "10.3.0.0.1.1562985497",
         "Xcode": "10.3",
         "macOS": "10.14.6"

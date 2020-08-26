@@ -9,6 +9,7 @@
 # =============
 #    ALIAS
 # =============
+alias gr="git rebase"
 alias cd_code="cd $HOME/Documents/code"
 alias ..='cd ..'
 
