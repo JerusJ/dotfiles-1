@@ -8,22 +8,25 @@
         "revision": "110666adad626439d950b405e4164079f8068fa5"
       },
       "homebrew/cask": {
-        "revision": "3ea6c98b90ff5388f208c54c04fc37ba5c088d8a"
+        "revision": "68376d4f4c698068b289b663187253a97b3ebd85"
       },
       "homebrew/cask-versions": {
-        "revision": "773f9035899f6e055060fa06b354e5a2740b5aa9"
+        "revision": "195a8635df67537a33bb463a4f11928114e45c65"
       },
       "homebrew/core": {
-        "revision": "9a5186e85fe82ead20bb8b64b9b758bde09a8bf9"
+        "revision": "ef3b24bfe75185157bb0f9e02c59b61b7313fefb"
       },
       "homebrew/services": {
         "revision": "a2c3e50e4d1ac0e5f948f7d7fe17281fe1d18f32"
       },
       "puppetlabs/puppet": {
-        "revision": "42e6a12563c32b770f7aae2c0640fcfd3744c6e0"
+        "revision": "370d1b0b2c786b4b414e9f185240b8013bf42d03"
       },
       "warrensbox/tap": {
         "revision": "5459d6900ecc10a158ae7bb0de8fd2220af028b0"
+      },
+      "homebrew/cask-fonts": {
+        "revision": "7900f58da1f74289cb8f0ef44fb059175a49870b"
       }
     },
     "brew": {
@@ -49,22 +52,22 @@
         }
       },
       "awscli": {
-        "version": "2.0.42",
+        "version": "2.0.43",
         "bottle": {
           "cellar": "/usr/local/Cellar",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.42.catalina.bottle.tar.gz",
-              "sha256": "4d036dee1f19568f74cfd85874ef49570f9b1801a0637883ccfb63736dfd4a5b"
+              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.43.catalina.bottle.tar.gz",
+              "sha256": "5a58289c4c92b2c128037074f813ab2956ee0e35e913dcfa655f83353803b2d1"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.42.mojave.bottle.tar.gz",
-              "sha256": "fd7e99234056b89cd56fbd4c5206b69bab6eb1d73459637086fb3bcfa3e3588e"
+              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.43.mojave.bottle.tar.gz",
+              "sha256": "85f2cceb6b29ad70cbd0c6ab169fceb869a7831c5d65221d9786977447f14598"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.42.high_sierra.bottle.tar.gz",
-              "sha256": "3d37c1ddab7210a802923b223f7af58ba798f61604ca61d8baac98fb3d0492c6"
+              "url": "https://homebrew.bintray.com/bottles/awscli-2.0.43.high_sierra.bottle.tar.gz",
+              "sha256": "36969a7b29c24f682e2655cbdd8bb9a87a664f59512b395c5b57d171662bf530"
             }
           }
         }
@@ -286,22 +289,22 @@
         }
       },
       "etcd": {
-        "version": "3.4.12",
+        "version": "3.4.13",
         "bottle": {
           "cellar": ":any_skip_relocation",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.12.catalina.bottle.tar.gz",
-              "sha256": "e64dd2aa6a4f8a3b4476b16a74fd0187a675470e3386c84041374368be8d796f"
+              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.13.catalina.bottle.tar.gz",
+              "sha256": "ff3603b21a38568e3a2ae9964cdacbb5adfdc8b094c98b8e0423d2e4fb82c8ca"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.12.mojave.bottle.tar.gz",
-              "sha256": "ba7f5fb7daa1e20b167983ecf293c611c5bdb3a5acb0cf1cb1cfd60e19471213"
+              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.13.mojave.bottle.tar.gz",
+              "sha256": "8c3f78a11d36c7c934deb4faa1007645d8cdb8293b04242e92e536551752a805"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.12.high_sierra.bottle.tar.gz",
-              "sha256": "05f9f749866691321ca6d31ceed84daabc740defe2997314e6829e832f5e1f1f"
+              "url": "https://homebrew.bintray.com/bottles/etcd-3.4.13.high_sierra.bottle.tar.gz",
+              "sha256": "642a6b2ef0dbfabad3645e512c507aca25fa777a84e1790f7d18f8f63a2c637d"
             }
           }
         }
@@ -1245,22 +1248,22 @@
         }
       },
       "kubernetes-cli": {
-        "version": "1.18.8",
+        "version": "1.19.0",
         "bottle": {
           "cellar": ":any_skip_relocation",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/kubernetes-cli-1.18.8.catalina.bottle.tar.gz",
-              "sha256": "6f93ab2c3883f480dbdc0e45e88f3e558ab0c9ffaeb58e906d69a39a4d381f27"
+              "url": "https://homebrew.bintray.com/bottles/kubernetes-cli-1.19.0.catalina.bottle.tar.gz",
+              "sha256": "46b7d96c97256a2a4a55fcbb8c72085a76ac6eac1b61a9d030d07ed7537f2c5c"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/kubernetes-cli-1.18.8.mojave.bottle.tar.gz",
-              "sha256": "cd1c01158cf241b07f0e4875acf151099fabf44b5c55e7b33b457a9eb0fefcfe"
+              "url": "https://homebrew.bintray.com/bottles/kubernetes-cli-1.19.0.mojave.bottle.tar.gz",
+              "sha256": "214b259580cd5d9c0a4c97c5bc56931a3ae86a035ce0c67bc1c12671bcb4f175"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/kubernetes-cli-1.18.8.high_sierra.bottle.tar.gz",
-              "sha256": "a86b0894d94dbb51d75efec1dc2781cd83d657a9c7ad2bb65b7ad24971339f0d"
+              "url": "https://homebrew.bintray.com/bottles/kubernetes-cli-1.19.0.high_sierra.bottle.tar.gz",
+              "sha256": "b5a5d643326f9301164e1167d9ad21d9657a55da697da761cf5feb42be629ca2"
             }
           }
         }
@@ -1470,7 +1473,7 @@
         }
       },
       "vagrant": {
-        "version": "2.2.9",
+        "version": "2.2.10",
         "options": {
           "full_name": "vagrant"
         }
@@ -1522,6 +1525,12 @@
         "options": {
           "full_name": "the-unarchiver"
         }
+      },
+      "font-menlo-for-powerline": {
+        "version": "latest",
+        "options": {
+          "full_name": "font-menlo-for-powerline"
+        }
       }
     }
   },
@@ -1530,7 +1539,7 @@
       "mojave": {
         "HOMEBREW_VERSION": "2.4.13",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "9a5186e85fe82ead20bb8b64b9b758bde09a8bf9",
+        "Homebrew/homebrew-core": "ef3b24bfe75185157bb0f9e02c59b61b7313fefb",
         "CLT": "10.3.0.0.1.1562985497",
         "Xcode": "10.3",
         "macOS": "10.14.6"
