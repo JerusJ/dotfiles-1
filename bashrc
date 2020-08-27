@@ -2,7 +2,7 @@
 # 1. Install latest bash via brew: brew install bash
 # 2. To source .bashrc, create .bash_profile with content:
 #
-#    if [ -f ~/.bashrc ]; then . ~/.bashrc; fi 
+#    if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
 #
 ###############
 
@@ -18,13 +18,13 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 
-# Get it from the original Git repo: 
+# Get it from the original Git repo:
 # https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 if [ -f ~/.git-prompt.sh ]; then
   source ~/.git-prompt.sh
 fi
 
-# # Get it from the original Git repo: 
+# # Get it from the original Git repo:
 # https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 if [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
@@ -39,12 +39,12 @@ alias ll='ls -alGpF' # Mac OSX specific
 # most used fast git commands
 alias t="tig status"
 alias tigs="tig status" #old habits don't die
-alias d='git diff' 
+alias d='git diff'
 
 alias vi='nvim'
 alias vim='nvim'
 # alias vi='vim'
- 
+
 #################
 # Git
 #################
@@ -90,7 +90,7 @@ export PROMPT_COMMAND='__git_ps1 "\[$(tput setaf 6)\]\W\[$(tput sgr0)\]\[$(tput 
 
 # ignoreboth ignores commands starting with a space and duplicates. Erasedups
 # removes all previous dups in history
-export HISTCONTROL=ignoreboth:erasedups  
+export HISTCONTROL=ignoreboth:erasedups
 export HISTFILE=~/.bash_history          # be explicit about file path
 export HISTSIZE=100000                   # in memory history size
 export HISTFILESIZE=100000               # on disk history size
@@ -113,7 +113,7 @@ bind "set show-all-if-ambiguous On" # show list automatically, without double ta
 # Ignore files with these suffixes when performing completion.
 export FIGNORE='.o:.pyc'
 
-# Ignore files that match these patterns when 
+# Ignore files that match these patterns when
 # performing filename expansion.
 export GLOBIGNORE='.DS_Store:*.o:*.pyc'
 

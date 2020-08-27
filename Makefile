@@ -39,7 +39,7 @@ endif
 
 
 clean:
-	rm -f ~/.vimrc 
+	rm -f ~/.vimrc
 	rm -f ~/.config/nvim/init.vim
 	rm -f ~/.config/alacritty/alacritty.yml
 	rm -f ~/.bashrc

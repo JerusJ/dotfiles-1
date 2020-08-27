@@ -13,7 +13,7 @@ alias gr="git rebase"
 alias cd_code="cd $HOME/Documents/code"
 alias ..='cd ..'
 
-alias d='git diff' 
+alias d='git diff'
 alias vi='vim'
 
 case `uname` in
@@ -24,7 +24,7 @@ case `uname` in
   ;;
   Linux)
     alias ll='ls -al'
-    alias ls='ls --color=auto' 
+    alias ls='ls --color=auto'
   ;;
 esac
 
@@ -37,7 +37,7 @@ alias po='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 # cd into git root dir
 alias cdr='cd $(git rev-parse --show-toplevel)'
 
-# show 
+# show
 alias duh='du -sh -h * .[^.]* 2> /dev/null | sort -h'
 
 # build and test
@@ -105,12 +105,12 @@ setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
 # ignore duplication command history list
-setopt hist_ignore_dups 
+setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 # share command history data
-setopt share_history 
+setopt share_history
 
 # =============
 #    PROMPT
@@ -210,7 +210,7 @@ bindkey -e
 
 # [Ctrl-r] - Search backward incrementally for a specified string. The string
 # may begin with ^ to anchor the search to the beginning of the line.
-bindkey '^r' history-incremental-search-backward      
+bindkey '^r' history-incremental-search-backward
 
 if [[ "${terminfo[kpp]}" != "" ]]; then
   bindkey "${terminfo[kpp]}" up-line-or-history       # [PageUp] - Up a line of history
@@ -248,7 +248,7 @@ fi
 typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH
 
 # only exit if we're not on the last pane
-	
+
 exit() {
   if [[ -z $TMUX ]]; then
     builtin exit
@@ -256,7 +256,7 @@ exit() {
   fi
 
   panes=$(tmux list-panes | wc -l)
-  wins=$(tmux list-windows | wc -l) 
+  wins=$(tmux list-windows | wc -l)
   count=$(($panes + $wins - 1))
   if [ $count -eq 1 ]; then
     tmux detach
@@ -299,7 +299,7 @@ fi
 
 if [ ! -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
 	source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-else 
+else
 	source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
