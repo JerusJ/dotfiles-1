@@ -11,7 +11,7 @@ tap "puppetlabs/puppet"
 tap "warrensbox/tap"
 
 # CLI
-brew "ansible"
+# brew "ansible"
 brew "aria2"
 brew "awscli"
 brew "aybabtme/tap/dorepl"
@@ -78,9 +78,9 @@ brew "wget"
 brew "youtube-dl"
 brew "yq"
 brew "z"
-brew "zsh"
-brew "zsh-autosuggestions"
-brew "zsh-syntax-highlighting"
+# brew "zsh"
+# brew "zsh-autosuggestions"
+# brew "zsh-syntax-highlighting"
 
 # GUI
 cask "alfred"
