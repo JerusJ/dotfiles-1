@@ -1,6 +1,6 @@
 [user]
 	name = Jesse Rusak
-	email = rusak.jesse@gmail.com
+	email = jesse.rusak@everops.com
 [alias]
 	st = status -sb
 	ci = commit
@@ -35,10 +35,11 @@
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	editor = nvim
 	quotepath = false
+	excludesfile = /Users/jesse-mac/.gitignore
 [credential]
 	helper = osxkeychain
 [github]
-	user = JerusJ
+	user = everops-jesse
 [mergetool]
 	keepBackup = true
 [filter "media"]
@@ -46,5 +47,5 @@
 	smudge = git-media-smudge %f
 [push]
 	default = current
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+# [url "git@github.com:"]
+#	insteadOf = https://github.com/

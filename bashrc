@@ -191,3 +191,6 @@ eval "$(jump shell)"
 # brew install direnv
 # https://github.com/direnv/direnv
 eval "$(direnv hook bash)"
+
+# brew install rbenv
+eval "$(rbenv init -)"
