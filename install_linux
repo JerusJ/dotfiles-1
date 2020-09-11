@@ -18,6 +18,8 @@ export GOPATH=/go
 export GOROOT=/usr/local/go
 export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
+setxkbmap -layout us -option ctrl:nocaps
+
 # Build/Network General Utilities
 echo "--> Installing General Utilities..."
 apt-get update && apt-get install -y --no-install-recommends \
@@ -196,3 +198,5 @@ wget https://github.com/gsamokovarov/jump/releases/download/v${JUMP_VERSION}/jum
 
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
