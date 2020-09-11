@@ -54,4 +54,4 @@ ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 endif
 
 
-.PHONY: all clean sync build run kill mouse
+.PHONY: all clean sync build run kill

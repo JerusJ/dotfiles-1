@@ -18,10 +18,6 @@ export GOPATH=/go
 export GOROOT=/usr/local/go
 export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
-
-echo "--> Setting caps-lock to be CTRL..."
-setxkbmap -layout us -option ctrl:nocaps
-
 echo "--> Disabling Mouse Acceleration..."
 cat << EOF > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf
 Section "InputClass"
@@ -199,7 +195,7 @@ sudo apt-get install -y \
 	virtualbox \
 	virtualbox-ext-pack \
 	vlc \
-	lutris
+	lutris \
 
 snap install \
 	spotify \
@@ -213,3 +209,7 @@ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+echo "--> Installing oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
