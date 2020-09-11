@@ -196,6 +196,7 @@ sudo apt-get install -y \
 	virtualbox-ext-pack \
 	vlc \
 	lutris \
+	redshift-gtk
 
 snap install \
 	spotify \
