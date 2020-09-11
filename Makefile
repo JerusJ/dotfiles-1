@@ -2,7 +2,7 @@ CUR_PLATFORM := $(shell uname)
 MAC_PLATFORM := Darwin
 MAC_RUBY_VERSION := 2.7.1
 
-all: sync mac
+all: apps sync 
 
 sync:
 	mkdir -p ~/.config/alacritty
@@ -20,12 +20,12 @@ sync:
 	# don't show last login message
 	touch ~/.hushlogin
 
-mac:
+apps:
 ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1
 	brew bundle
 else
-	echo "Current platform: ${CUR_PLATFORM}, is not supported. Require: ${MAC_PLATFORM}, skipping..."
+	sudo ./install_linux
 endif
 
 ruby:

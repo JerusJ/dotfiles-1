@@ -1,0 +1,198 @@
+#!/usr/bin/env bash
+
+set -e 
+set -u
+
+# Version Vars
+export GOLANG_VERSION=1.13.8
+export ANSIBLE_VERSION=2.9.11
+export KUBECTL_VERSION=1.17.0
+export KUSTOMIZE_VERSION=3.5.2
+export TERRAFORM_VERSION=0.13.2
+export PACKER_VERSION=1.4.5
+export HELM_VERSION=3.1.1
+export JUMP_VERSION=0.30.1
+
+# Golang Vars
+export GOPATH=/go
+export GOROOT=/usr/local/go
+export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
+
+# Build/Network General Utilities
+echo "--> Installing General Utilities..."
+apt-get update && apt-get install -y --no-install-recommends \
+  build-essential \
+  git \
+  ca-certificates \
+  gcc \
+  make \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  iproute2 \
+  gnupg2 \
+  software-properties-common \
+  unzip \
+  sshpass \
+  bash \
+  jq \
+  openssh-client \
+  libnss3-tools \
+  curl
+
+echo "--> Installing Golang..."
+curl -L https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz \
+  | tar -xzvC /usr/local 
+
+mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+
+echo "--> Installing Python..."
+apt-get update && apt-get -y install \
+  python3-pip
+
+echo "--> Installing Go Linters..."
+curl https://glide.sh/get | sh
+go get -u \
+  golang.org/x/tools/cmd/godoc \
+  cmd/gofmt \
+  golang.org/x/tools/cmd/goimports \
+  golang.org/x/lint/golint
+
+echo "--> Installing Node..."
+curl -sL https://deb.nodesource.com/setup_12.x | bash -
+apt-get update && apt-get install -y nodejs
+
+echo "--> Installing Markdown Linters..."
+npm install markdownlint \
+  && npm cache clean --force
+
+echo "--> Installing Terraform Linters..."
+curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip && rm tflint.zip \
+  && mv ./tflint* /usr/local/bin/tflint \
+  && chmod +x /usr/local/bin/tflint
+
+echo "--> Installing Pip Packages for Setup..."
+pip3 install --no-cache-dir --upgrade \
+  pip \
+  setuptools \
+  suds-jurko \
+  requests
+
+echo "--> Installing Python Packages for Linters..."
+pip3 install --no-cache-dir \
+  pylint \
+  appdirs \
+  attrs \
+  click \
+  entrypoints \
+  flake8 \
+  isort \
+  mccabe \
+  mypy-extensions \
+  mypy \
+  pycodestyle \
+  pyflakes \
+  toml \
+  typed-ast \
+  typing-extensions \
+  unify \
+  untokenize \
+  yapf \
+  ansible-lint \
+  yamllint
+
+echo "--> Installing Python Packages for Documentation..."
+pip3 install --no-cache-dir \
+  sphinx \
+  sphinx_rtd_theme
+
+echo "--> Installing Python Packages for Ansible..."
+pip3 install --no-cache-dir \
+  ansible==${ANSIBLE_VERSION} \
+  molecule \
+  pyvmomi \
+  jmespath \
+  pywinrm \
+  pexpect \
+  boto \
+  boto3 \
+  botocore \
+  git+https://github.com/vmware/vsphere-automation-sdk-python.git
+
+echo "--> Installing Python Packages for Tests..."
+pip3 install --no-cache-dir \
+  pytest \
+  pytest-cov \
+  pytest-dependency \
+  pytest-timeout \
+  pytest-html \
+  pytest-selenium \
+  pytest-xdist \
+  kubernetes \
+  testinfra \
+  paramiko
+
+echo "--> Installing Docker..."
+apt-get -y install docker.io
+
+echo "--> Installing Kubectl ${KUBECTL_VERSION}..."
+curl -L -o /usr/local/bin/kubectl \
+  https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
+  && chmod +x /usr/local/bin/kubectl
+
+echo "--> Installing Kustomize ${KUSTOMIZE_VERSION}..."
+curl -L \
+	https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz \
+	| tar -xzvC /usr/local/bin/
+
+echo "--> Installing Terraform ${TERRAFORM_VERSION}..."
+curl -fsSL https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o /tmp/terraform.zip \
+  && unzip /tmp/terraform.zip -d /usr/local/bin \
+  && rm /tmp/terraform.zip
+
+echo "--> Installing Packer ${PACKER_VERSION}..."
+curl -fsSl https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o /tmp/packer.zip \
+  && unzip /tmp/packer.zip -d /usr/local/bin \
+  && rm /tmp/packer.zip
+
+echo "--> Installing Helm ${HELM_VERSION}..."
+curl -L https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
+  | tar -xz \
+  && mv linux-*/helm /usr/local/bin \
+  && rm -rf linux-*
+
+
+echo "--> Installing Personal Applications..."
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo add-apt-repository ppa:lutris-team/lutris
+
+sudo apt-get update -y
+sudo apt-get install -y \
+	code \
+	vlc \
+	youtube-dl \
+	silversearcher-ag \
+	steam \
+	zsh \
+	zsh-syntax-highlighting \
+	zsh-autosuggestions \
+	tree \
+	vagrant \
+	bpython \
+	virtualbox \
+	virtualbox-ext-pack \
+	vlc \
+	lutris
+
+snap install \
+	spotify \
+	discord \
+
+wget https://github.com/gsamokovarov/jump/releases/download/v${JUMP_VERSION}/jump_${JUMP_VERSION}_amd64.deb \
+	&& sudo dpkg -i jump_${JUMP_VERSION}_amd64.deb \
+	&& rm -f jump_${JUMP_VERSION}_amd64.deb
+
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
