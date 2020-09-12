@@ -305,8 +305,8 @@ case `uname` in
 	source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   ;;
   Linux)
-	source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-	source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   ;;
 esac
 
@@ -319,6 +319,3 @@ eval "$(jump shell)"
 
 # brew install rbenv
 eval "$(rbenv init -)"
-
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-export PATH="/usr/local/opt/mysql-client@5.7/bin:$PATH"

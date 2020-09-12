@@ -16,6 +16,7 @@ sync:
 	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
 	[ -f ~/.gitconfig ] || ln -s $(PWD)/gitconfig ~/.gitconfig
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
+	[ -f ~/.config/kitty/kitty.conf ] || ln -s $(PWD)/kitty.conf ~/.config/kitty/kitty.conf
 
 	# don't show last login message
 	touch ~/.hushlogin

@@ -196,7 +196,8 @@ sudo apt-get install -y \
 	virtualbox-ext-pack \
 	vlc \
 	lutris \
-	redshift-gtk
+	redshift-gtk \
+	kitty
 
 snap install \
 	spotify \
@@ -214,3 +215,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "--> Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+
+git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+ln -s  ~/.config/kitty/kitty-themes/themes/gruvbox_dark.conf ~/.config/kitty/theme.conf
