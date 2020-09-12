@@ -6,9 +6,18 @@
 # It contains GOPATH, some functions, aliases etc...
 [ -r ~/.zsh_private ] && source ~/.zsh_private
 
+case `uname` in
+  Darwin)
+	  setxkbmap -option ctrl:nocaps
+  ;;
+esac
+
+
+
 # =============
 #    ALIAS
 # =============
+
 alias gr="git rebase"
 alias cd_code="cd $HOME/Documents/code"
 alias ..='cd ..'
@@ -290,18 +299,17 @@ function switchgo() {
 # ===================
 #    PLUGINS
 # ===================
-
-if [ ! -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+#
+case `uname` in
+  Darwin)
 	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-	source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-if [ ! -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
 	source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-else
+  ;;
+  Linux)
+	source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+  ;;
+esac
 
 # ===================
 #    THIRD PARTY
