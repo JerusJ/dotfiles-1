@@ -199,7 +199,8 @@ sudo apt-get install -y \
 	lutris \
 	redshift-gtk \
 	kitty \
-	fonts-firacode
+	fonts-firacode \
+	nvidia-cuda-toolkit
 
 snap install \
 	spotify \
