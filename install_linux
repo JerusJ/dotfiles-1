@@ -198,7 +198,8 @@ sudo apt-get install -y \
 	vlc \
 	lutris \
 	redshift-gtk \
-	kitty
+	kitty \
+	fonts-firacode
 
 snap install \
 	spotify \
