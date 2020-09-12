@@ -196,7 +196,6 @@ sudo apt-get install -y \
 	zsh-syntax-highlighting \
 	zsh-autosuggestions \
 	tree \
-	vagrant \
 	bpython \
 	virtualbox \
 	virtualbox-ext-pack \
