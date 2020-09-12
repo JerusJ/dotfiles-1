@@ -7,11 +7,10 @@
 [ -r ~/.zsh_private ] && source ~/.zsh_private
 
 case `uname` in
-  Darwin)
+  Linux)
 	  setxkbmap -option ctrl:nocaps
   ;;
 esac
-
 
 
 # =============
