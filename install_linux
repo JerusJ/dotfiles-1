@@ -204,7 +204,8 @@ sudo apt-get install -y \
 	redshift-gtk \
 	kitty \
 	fonts-firacode \
-	nvidia-cuda-toolkit
+	nvidia-cuda-toolkit \
+	pavucontrol
 
 echo "--> Installing i3 WM..."
 sudo apt-get install -y \
