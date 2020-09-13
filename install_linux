@@ -206,6 +206,25 @@ sudo apt-get install -y \
 	fonts-firacode \
 	nvidia-cuda-toolkit
 
+echo "--> Installing i3 WM..."
+sudo apt-get install -y \
+	i3-wm \
+	dunst \
+	i3lock \
+	i3status \
+	suckless-tools
+	compton \
+	hsetroot \
+	xsel \
+	rofi \ 
+	fonts-noto \
+	fonts-mplus \
+	xsettingsd \
+	lxappearance \
+	scrot \ 
+	viewnior
+git clone git@github.com:JerusJ/i3-starterpack.git && cp -a i3-starterpack/. ~
+
 snap install \
 	spotify \
 	discord \
