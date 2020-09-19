@@ -51,7 +51,8 @@ apt-get update && apt-get install -y --no-install-recommends \
   openssh-client \
   libnss3-tools \
   curl \
-  rbenv
+  rbenv \
+  python3-gpg
 
 echo "--> Installing Golang..."
 curl -L https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz \
@@ -258,3 +259,8 @@ let &packpath=&runtimepath
 source ~/.vimrc
 EOF
 fi
+
+echo "--> Installing Dropbox"
+curl -L 'https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb' -o /tmp/dropbox.deb
+dpkg -i /tmp/dropbox.deb
+rm -f /tmp/dropbox.deb

@@ -24,6 +24,8 @@ alias ..='cd ..'
 alias d='git diff'
 alias vi='vim'
 
+alias vrdp='xfreerdp /v:127.0.0.1:33389 /u:vagrant /p:vagrant'
+
 case `uname` in
   Darwin)
     alias flushdns='sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say cache flushed'
@@ -36,7 +38,6 @@ case `uname` in
     # See: https://askubuntu.com/questions/123798/how-to-hear-my-voice-in-speakers-with-a-mic
     alias start_listen='pactl load-module module-loopback latency_msec=1'
     alias stop_listen="pactl unload-module $(pactl list short modules | awk '$2' | grep 'module-loopback' | awk '{ print $1 }')"
-
   ;;
 esac
 
