@@ -19,16 +19,16 @@ export GOPATH=/go
 export GOROOT=/usr/local/go
 export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
-echo "--> Disabling Mouse Acceleration..."
-cat <<EOF >/usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf
-Section "InputClass"
-    Identifier "My Mouse"
-    MatchIsPointer "yes"
-    Option "AccelerationProfile" "-1"
-    Option "AccelerationScheme" "none"
-    Option "AccelSpeed" "-1"
-EndSection
-EOF
+# echo "--> Disabling Mouse Acceleration..."
+# sudo cat <<EOF >/usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf
+# Section "InputClass"
+#     Identifier "My Mouse"
+#     MatchIsPointer "yes"
+#     Option "AccelerationProfile" "-1"
+#     Option "AccelerationScheme" "none"
+#     Option "AccelSpeed" "-1"
+# EndSection
+# EOF
 
 # Build/Network General Utilities
 echo "--> Installing General Utilities..."
@@ -74,18 +74,23 @@ go get -u \
   golang.org/x/tools/cmd/goimports \
   golang.org/x/lint/golint || true
 
-echo "--> Installing Node..."
-curl -sL https://deb.nodesource.com/setup_12.x | bash -
-sudo apt-get update && sudo apt-get install -y nodejs
+# echo "--> Installing Node..."
+# curl -sL https://deb.nodesource.com/setup_12.x | bash -
+# sudo apt-get update && sudo apt-get install -y nodejs
 
 echo "--> Installing Markdown Linters..."
 npm install markdownlint &&
   npm cache clean --force
 
-echo "--> Installing Terraform Linters..."
-curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip && rm tflint.zip &&
-  mv ./tflint* /usr/local/bin/tflint &&
-  chmod +x /usr/local/bin/tflint
+if [ ! -f /usr/local/bin/tflint ]; then
+  echo "--> Installing Terraform Linters..."
+  curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" &&
+    -o tflint.zip &&
+    unzip tflint.zip &&
+    rm tflint.zip &&
+    mv ./tflint* /usr/local/bin/tflint &&
+    chmod +x /usr/local/bin/tflint
+fi
 
 echo "--> Installing Pip Packages for Setup..."
 pip3 install --no-cache-dir --upgrade \
@@ -194,8 +199,8 @@ if [ ! -f /usr/local/bin/vagrant ]; then
 fi
 
 echo "--> Installing Personal Applications..."
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >packages.microsoft.gpg
-install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >packages.microsoft.gpg || true
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
 sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo add-apt-repository -y ppa:lutris-team/lutris
 
