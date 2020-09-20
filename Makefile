@@ -26,7 +26,7 @@ ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1
 	brew bundle
 else
-	sudo ./install_linux
+	./install_linux
 endif
 
 ruby:
