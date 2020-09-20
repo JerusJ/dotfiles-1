@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+I3_REPO=https://github.com/JerusJ/i3-starterpack.git
+I3_REPO_DEST="${HOME}"/i3-config
+
+echo "--> Installing basic i3 packages..."
+sudo apt-get install -y \
+	i3 \
+	i3-wm \
+	dunst \
+	i3lock \
+	i3status \
+	suckless-tools
+
+echo "--> Installing desktop look-and-feel packages..."
+sudo apt-get install -y \
+	compton \
+	hsetroot \
+	rxvt-unicode \
+	xsel \
+	rofi \
+	fonts-noto \
+	fonts-mplus \
+	xsettingsd \
+	lxappearance \
+	scrot \
+	viewnior
+
+echo "--> Cloning repository and copying config files..."
+git clone ${I3_REPO} ${I3_REPO_DEST}
+cp -a ${I3_REPO_DEST}/. ~
