@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e 
+set -e
 set -u
 
 # Version Vars
@@ -20,7 +20,7 @@ export GOROOT=/usr/local/go
 export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
 echo "--> Disabling Mouse Acceleration..."
-cat << EOF > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf
+cat <<EOF >/usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf
 Section "InputClass"
     Identifier "My Mouse"
     MatchIsPointer "yes"
@@ -55,36 +55,37 @@ apt-get update && apt-get install -y --no-install-recommends \
   python3-gpg
 
 echo "--> Installing Golang..."
-curl -L https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz \
-  | tar -xzvC /usr/local 
+if [ ! -d /usr/local/go ]; then
+  curl -L https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz |
+    tar -xzvC /usr/local
 
-mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+  mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+else
+  echo "--> Go Already installed, skipping..."
+fi
 
 echo "--> Installing Python..."
-apt-get update && apt-get -y install \
-  python3-pip
-  python3-venv
+apt-get install -y python3-pip python3-venv
 
 echo "--> Installing Go Linters..."
-curl https://glide.sh/get | sh
 go get -u \
   golang.org/x/tools/cmd/godoc \
   cmd/gofmt \
   golang.org/x/tools/cmd/goimports \
-  golang.org/x/lint/golint
+  golang.org/x/lint/golint || true
 
 echo "--> Installing Node..."
 curl -sL https://deb.nodesource.com/setup_12.x | bash -
 apt-get update && apt-get install -y nodejs
 
 echo "--> Installing Markdown Linters..."
-npm install markdownlint \
-  && npm cache clean --force
+npm install markdownlint &&
+  npm cache clean --force
 
 echo "--> Installing Terraform Linters..."
-curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip && rm tflint.zip \
-  && mv ./tflint* /usr/local/bin/tflint \
-  && chmod +x /usr/local/bin/tflint
+curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip && rm tflint.zip &&
+  mv ./tflint* /usr/local/bin/tflint &&
+  chmod +x /usr/local/bin/tflint
 
 echo "--> Installing Pip Packages for Setup..."
 pip3 install --no-cache-dir --upgrade \
@@ -131,8 +132,7 @@ pip3 install --no-cache-dir \
   pexpect \
   boto \
   boto3 \
-  botocore \
-  git+https://github.com/vmware/vsphere-automation-sdk-python.git
+  botocore
 
 echo "--> Installing Python Packages for Tests..."
 pip3 install --no-cache-dir \
@@ -150,110 +150,118 @@ pip3 install --no-cache-dir \
 echo "--> Installing Docker..."
 apt-get -y install docker.io
 
-echo "--> Installing Kubectl ${KUBECTL_VERSION}..."
-curl -L -o /usr/local/bin/kubectl \
-  https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
-  && chmod +x /usr/local/bin/kubectl
+if [ ! -f /usr/local/bin/kubectl ]; then
+  echo "--> Installing Kubectl ${KUBECTL_VERSION}..."
+  curl -L -o /usr/local/bin/kubectl \
+    https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl &&
+    chmod +x /usr/local/bin/kubectl
+fi
 
-echo "--> Installing Kustomize ${KUSTOMIZE_VERSION}..."
-curl -L \
-	https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz \
-	| tar -xzvC /usr/local/bin/
+if [ ! -f /usr/local/bin/kustomize ]; then
+  echo "--> Installing Kustomize ${KUSTOMIZE_VERSION}..."
+  curl -L \
+    https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz |
+    tar -xzvC /usr/local/bin/
+fi
 
-echo "--> Installing Terraform ${TERRAFORM_VERSION}..."
-curl -fsSL https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o /tmp/terraform.zip \
-  && unzip /tmp/terraform.zip -d /usr/local/bin \
-  && rm /tmp/terraform.zip
+if [ ! -f /usr/local/bin/terraform ]; then
+  echo "--> Installing Terraform ${TERRAFORM_VERSION}..."
+  curl -fsSL https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o /tmp/terraform.zip &&
+    unzip /tmp/terraform.zip -d /usr/local/bin &&
+    rm /tmp/terraform.zip
+fi
 
-echo "--> Installing Packer ${PACKER_VERSION}..."
-curl -fsSl https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o /tmp/packer.zip \
-  && unzip /tmp/packer.zip -d /usr/local/bin \
-  && rm /tmp/packer.zip
+if [ ! -f /usr/local/bin/packer ]; then
+  echo "--> Installing Packer ${PACKER_VERSION}..."
+  curl -fsSl https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o /tmp/packer.zip &&
+    unzip /tmp/packer.zip -d /usr/local/bin &&
+    rm /tmp/packer.zip
+fi
 
-echo "--> Installing Helm ${HELM_VERSION}..."
-curl -L https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
-  | tar -xz \
-  && mv linux-*/helm /usr/local/bin \
-  && rm -rf linux-*
+if [ ! -f /usr/local/bin/helm ]; then
+  echo "--> Installing Helm ${HELM_VERSION}..."
+  curl -L https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz |
+    tar -xz &&
+    mv linux-*/helm /usr/local/bin &&
+    rm -rf linux-*
+fi
 
-echo "--> Installing Vagrant ${VAGRANT_VERSION}..."
-curl -fsSl https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_linux_amd64.zip /tmp/vagrant.zip \
-  && unzip /tmp/vagrant.zip -d /usr/local/bin \
-  && rm /tmp/vagrant.zip
+if [ ! -f /usr/local/bin/vagrant ]; then
+  echo "--> Installing Vagrant ${VAGRANT_VERSION}..."
+  curl -fsSl https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_linux_amd64.zip /tmp/vagrant.zip &&
+    unzip /tmp/vagrant.zip -d /usr/local/bin &&
+    rm /tmp/vagrant.zip
+fi
 
 echo "--> Installing Personal Applications..."
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo add-apt-repository ppa:lutris-team/lutris
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >packages.microsoft.gpg
+install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+add-apt-repository -y ppa:lutris-team/lutris
 
-sudo apt-get update -y
-sudo apt-get install -y \
-	code \
-	vlc \
-	youtube-dl \
-	silversearcher-ag \
-	steam \
-	zsh \
-	zsh-syntax-highlighting \
-	zsh-autosuggestions \
-	tree \
-	bpython \
-	virtualbox \
-	virtualbox-ext-pack \
-	vlc \
-	lutris \
-	redshift-gtk \
-	kitty \
-	fonts-firacode \
-	nvidia-cuda-toolkit \
-	pavucontrol
+apt-get update -y
+apt-get install -y \
+  code \
+  vlc \
+  youtube-dl \
+  silversearcher-ag \
+  steam \
+  zsh \
+  zsh-syntax-highlighting \
+  zsh-autosuggestions \
+  tree \
+  bpython \
+  virtualbox \
+  virtualbox-ext-pack \
+  vlc \
+  lutris \
+  redshift-gtk \
+  kitty \
+  fonts-firacode \
+  nvidia-cuda-toolkit \
+  pavucontrol
+
+echo "--> Installing Mouse/DPI Utilities..."
+apt-get install -y \
+  ratbagd \
+  piper
 
 echo "--> Installing i3 WM..."
-sudo apt-get install -y \
-	i3-wm \
-	dunst \
-	i3lock \
-	i3status \
-	suckless-tools
-	compton \
-	hsetroot \
-	xsel \
-	rofi \ 
-	fonts-noto \
-	fonts-mplus \
-	xsettingsd \
-	lxappearance \
-	scrot \ 
-	viewnior
-git clone git@github.com:JerusJ/i3-starterpack.git && cp -a i3-starterpack/. ~
+apt-get install -y \
+  i3-wm \
+  dunst \
+  i3lock \
+  i3status \
+  suckless-tools \
+  compton \
+  hsetroot \
+  xsel \
+  rofi \
+  fonts-noto \
+  fonts-mplus \
+  xsettingsd \
+  lxappearance \
+  scrot \
+  viewnior
 
 snap install \
-	spotify \
-	discord \
+  spotify \
+  discord || true
 
-wget https://github.com/gsamokovarov/jump/releases/download/v${JUMP_VERSION}/jump_${JUMP_VERSION}_amd64.deb \
-	&& sudo dpkg -i jump_${JUMP_VERSION}_amd64.deb \
-	&& rm -f jump_${JUMP_VERSION}_amd64.deb
+wget https://github.com/gsamokovarov/jump/releases/download/v${JUMP_VERSION}/jump_${JUMP_VERSION}_amd64.deb
+dpkg -i jump_${JUMP_VERSION}_amd64.deb
+rm -f jump_${JUMP_VERSION}_amd64.deb
 
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-echo "--> Installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-
-git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
-ln -s  ~/.config/kitty/kitty-themes/themes/gruvbox_dark.conf ~/.config/kitty/theme.conf
 
 echo "--> Setting up nvim to load .vimrc..."
 NVIM_CONFIG_FILE_PATH=~/.config/nvim/init.vim
 mkdir -p $(dirname ${NVIM_CONFIG_FILE_PATH})
 if [ ! -f "${NVIM_CONFIG_FILE_PATH}" ]; then
   echo "--> Creating ${NVIM_CONFIG_FILE_PATH}..."
-  cat << EOF > ~/.config/nvim/init.vim
+  cat <<EOF >~/.config/nvim/init.vim
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 source ~/.vimrc
@@ -264,3 +272,11 @@ echo "--> Installing Dropbox"
 curl -L 'https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb' -o /tmp/dropbox.deb
 dpkg -i /tmp/dropbox.deb
 rm -f /tmp/dropbox.deb
+
+echo "--> Installing Kitty Terminal Themes"
+mkdir -p ~/.config/kitty
+git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+ln -s ~/.config/kitty/kitty-themes/themes/gruvbox_dark.conf ~/.config/kitty/theme.conf
+
+echo "--> Installing oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

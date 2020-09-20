@@ -34,4 +34,5 @@ echo "--> Cloning repository and copying config files..."
 [ -d ~/.config/dunst ] || ln -s ${I3_REPO_DEST}/.config/dunst ~/.config/dunst
 [ -d ~/.config/i3 ] || ln -s ${I3_REPO_DEST}/.config/i3 ~/.config/i3
 [ -d ~/.config/i3status ] || ln -s ${I3_REPO_DEST}/.config/i3status ~/.config/i3status
+[ -d ~/.config/rofi/config ] || ln -s ${I3_REPO_DEST}/.config/rofi ~/.config/rofi
 [ -f ~/.config/compton.conf ] || ln -s ${I3_REPO_DEST}/.config/compton.conf ~/.config/compton.conf
