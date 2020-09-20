@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eu
+
 I3_REPO=https://github.com/JerusJ/i3-starterpack.git
 I3_REPO_DEST="${HOME}"/i3-config
 
@@ -27,5 +29,9 @@ sudo apt-get install -y \
 	viewnior
 
 echo "--> Cloning repository and copying config files..."
-git clone ${I3_REPO} ${I3_REPO_DEST}
-cp -a ${I3_REPO_DEST}/. ~
+[ -d "${I3_REPO_DEST}" ] || git clone ${I3_REPO} ${I3_REPO_DEST}
+[ -d ~/.config ] || mkdir -p ~/.config
+[ -d ~/.config/dunst ] || ln -s ${I3_REPO_DEST}/.config/dunst ~/.config/dunst
+[ -d ~/.config/i3 ] || ln -s ${I3_REPO_DEST}/.config/i3 ~/.config/i3
+[ -d ~/.config/i3status ] || ln -s ${I3_REPO_DEST}/.config/i3status ~/.config/i3status
+[ -f ~/.config/compton.conf ] || ln -s ${I3_REPO_DEST}/.config/compton.conf ~/.config/compton.conf
