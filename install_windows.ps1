@@ -11,6 +11,7 @@ function Install-Chocolatey-Apps {
         dotnetfx `
         doublecmd `
         dropbox `
+        f.lux `
         gimp `
         git `
         git-lfs `
