@@ -6,36 +6,35 @@ function Install-Chocolatey {
 
 function Install-Chocolatey-Apps {
     choco install -y `
-        vscode `
-        googlechrome `
-        steam `
-        discord `
-        listary `
-        python `
-        golang `
-        visualstudio-installer `
         7zip `
-        vlc `
+        discord `
+        dotnetfx `
+        doublecmd `
+        dropbox `
+        gimp `
         git `
         git-lfs `
-        dotnetfx `
-        gimp `
-        ruby `
-        neovim `
-        virtualbox `
-        vagrant `
-        doublecmd `
-        qbittorrent `
-        miktex `
-        dropbox `
+        golang `
+        googlechrome `
         hyper `
-        mingw
+        listary `
+        miktex `
+        mingw `
+        neovim `
+        python `
+        qbittorrent `
+        ruby `
+        steam `
+        vagrant `
+        virtualbox `
+        visualstudio-installer `
+        vlc `
+        vscode
 }
 
 function Install-Byond {
     $InstallerUrl = "http://www.byond.com/download/build/513/513.1532_byond.zip"
     $InstallerPath = "$env:TEMP\byond.zip"
-    $InstallerArgs = "-s"
     $DestinationPath = "$env:HOMEPATH\byond"
 
     Write-Host "--> Downloading Byond to: $InstallerPath..."
@@ -58,7 +57,7 @@ function Install-Byond {
 
 # Taken from: https://gist.github.com/joshschmelzle/5e88dabc71014d7427ff01bca3fed33d
 function Set-Keybindings {
-    $hexified = "00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00".Split(',') | % { "0x$_"};
+    $hexified = "00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00".Split(',') | % { "0x$_" };
     $kbLayout = 'HKLM:\System\CurrentControlSet\Control\Keyboard Layout';
     New-ItemProperty -Path $kbLayout -Name "Scancode Map" -PropertyType Binary -Value ([byte[]]$hexified);
 }
@@ -73,5 +72,6 @@ function Set-UAC {
 Install-Chocolatey
 Install-Chocolatey-Apps
 Install-Byond
+Install-Fonts
 Set-Keybindings
 Set-UAC
