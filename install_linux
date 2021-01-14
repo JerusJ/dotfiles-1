@@ -9,15 +9,16 @@ export ANSIBLE_VERSION=2.9.11
 export KUBECTL_VERSION=1.17.0
 export KUSTOMIZE_VERSION=3.5.2
 export TERRAFORM_VERSION=0.13.2
+export TERRAGRUNT_VERSION=0.26.7
 export PACKER_VERSION=1.4.5
 export HELM_VERSION=3.1.1
 export JUMP_VERSION=0.30.1
 export VAGRANT_VERSION=2.2.0
 
 # Golang Vars
-export GOPATH=/go
-export GOROOT=/usr/local/go
-export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
+# export GOPATH=/go
+# export GOROOT=/usr/local/go
+# export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
 # echo "--> Disabling Mouse Acceleration..."
 # sudo cat <<EOF >/usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf
@@ -54,25 +55,11 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   rbenv \
   python3-gpg
 
-echo "--> Installing Golang..."
-if [ ! -d /usr/local/go ]; then
-  curl -L https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz |
-    tar -xzvC /usr/local
-
-  mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
-else
-  echo "--> Go Already installed, skipping..."
-fi
-
 echo "--> Installing Python..."
 sudo apt-get install -y python3-pip python3-venv
 
-echo "--> Installing Go Linters..."
-go get -u \
-  golang.org/x/tools/cmd/godoc \
-  cmd/gofmt \
-  golang.org/x/tools/cmd/goimports \
-  golang.org/x/lint/golint || true
+echo "--> Installing Golang..."
+sudo apt-get install -y golang
 
 # echo "--> Installing Node..."
 # curl -sL https://deb.nodesource.com/setup_12.x | bash -
@@ -157,51 +144,58 @@ sudo apt-get -y install docker.io
 
 if [ ! -f /usr/local/bin/kubectl ]; then
   echo "--> Installing Kubectl ${KUBECTL_VERSION}..."
-  curl -L -o /usr/local/bin/kubectl \
+  sudo curl -L -o /usr/local/bin/kubectl \
     https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl &&
     chmod +x /usr/local/bin/kubectl
 fi
 
 if [ ! -f /usr/local/bin/kustomize ]; then
   echo "--> Installing Kustomize ${KUSTOMIZE_VERSION}..."
-  curl -L \
+  sudo curl -L \
     https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz |
     tar -xzvC /usr/local/bin/
 fi
 
 if [ ! -f /usr/local/bin/terraform ]; then
   echo "--> Installing Terraform ${TERRAFORM_VERSION}..."
-  curl -fsSL https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o /tmp/terraform.zip &&
-    unzip /tmp/terraform.zip -d /usr/local/bin &&
+  sudo curl -fsSL https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o /tmp/terraform.zip &&
+    sudo unzip /tmp/terraform.zip -d /usr/local/bin &&
     rm /tmp/terraform.zip
+fi
+
+if [ ! -f /usr/local/bin/terragrunt ]; then
+   echo "--> Installing Terragrunt ${TERRAGRUNT_VERSION}..."
+   sudo curl -L -o /usr/local/bin/terragrunt \
+     https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 \
+     && chmod +x /usr/local/bin/terragrunt
 fi
 
 if [ ! -f /usr/local/bin/packer ]; then
   echo "--> Installing Packer ${PACKER_VERSION}..."
-  curl -fsSl https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o /tmp/packer.zip &&
-    unzip /tmp/packer.zip -d /usr/local/bin &&
-    rm /tmp/packer.zip
+  sudo curl -fsSl https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o /tmp/packer.zip &&
+    sudo unzip /tmp/packer.zip -d /usr/local/bin &&
+    sudo rm /tmp/packer.zip
 fi
 
 if [ ! -f /usr/local/bin/helm ]; then
   echo "--> Installing Helm ${HELM_VERSION}..."
-  curl -L https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz |
+  sudo curl -L https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz |
     tar -xz &&
-    mv linux-*/helm /usr/local/bin &&
-    rm -rf linux-*
+    sudo mv linux-*/helm /usr/local/bin &&
+    sudo rm -rf linux-*
 fi
 
 if [ ! -f /usr/local/bin/vagrant ]; then
   echo "--> Installing Vagrant ${VAGRANT_VERSION}..."
-  curl -fsSl https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_linux_amd64.zip /tmp/vagrant.zip &&
-    unzip /tmp/vagrant.zip -d /usr/local/bin &&
-    rm /tmp/vagrant.zip
+  sudo curl -fsSl https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_linux_amd64.zip /tmp/vagrant.zip &&
+    sudo unzip /tmp/vagrant.zip -d /usr/local/bin &&
+    sudo rm /tmp/vagrant.zip
 fi
 
 echo "--> Installing Personal Applications..."
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >packages.microsoft.gpg || true
+sudo wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >packages.microsoft.gpg || true
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo add-apt-repository -y ppa:lutris-team/lutris
 
 sudo apt-get update -y
@@ -210,7 +204,6 @@ sudo apt-get install -y \
   vlc \
   youtube-dl \
   silversearcher-ag \
-  steam \
   zsh \
   zsh-syntax-highlighting \
   zsh-autosuggestions \
@@ -219,11 +212,9 @@ sudo apt-get install -y \
   virtualbox \
   virtualbox-ext-pack \
   vlc \
-  lutris \
   redshift-gtk \
   kitty \
   fonts-firacode \
-  nvidia-cuda-toolkit \
   pavucontrol
 
 echo "--> Installing Mouse/DPI Utilities..."
@@ -250,8 +241,7 @@ sudo apt-get install -y \
   viewnior
 
 snap install \
-  spotify \
-  discord || true
+  spotify 
 
 wget https://github.com/gsamokovarov/jump/releases/download/v${JUMP_VERSION}/jump_${JUMP_VERSION}_amd64.deb
 dpkg -i jump_${JUMP_VERSION}_amd64.deb
