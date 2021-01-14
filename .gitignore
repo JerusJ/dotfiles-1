@@ -4,6 +4,7 @@ node_modules/
 *.deb
 package-lock.json
 packages.microsoft.gpg
-*.zip
+*.zip*
 *.rpm
 *.deb
+*.deb.*

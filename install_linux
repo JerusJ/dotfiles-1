@@ -53,7 +53,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   libnss3-tools \
   curl \
   rbenv \
-  python3-gpg
+  python3-gpg \ 
 
 echo "--> Installing Python..."
 sudo apt-get install -y python3-pip python3-venv
@@ -141,6 +141,8 @@ pip3 install --no-cache-dir \
 
 echo "--> Installing Docker..."
 sudo apt-get -y install docker.io
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 if [ ! -f /usr/local/bin/kubectl ]; then
   echo "--> Installing Kubectl ${KUBECTL_VERSION}..."
