@@ -193,7 +193,7 @@ if [ ! -f /usr/local/bin/vagrant ]; then
 fi
 
 echo "--> Installing Personal Applications..."
-sudo wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >packages.microsoft.gpg || true
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor >packages.microsoft.gpg || true
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo add-apt-repository -y ppa:lutris-team/lutris
@@ -244,12 +244,12 @@ snap install \
   spotify 
 
 wget https://github.com/gsamokovarov/jump/releases/download/v${JUMP_VERSION}/jump_${JUMP_VERSION}_amd64.deb
-dpkg -i jump_${JUMP_VERSION}_amd64.deb
-rm -f jump_${JUMP_VERSION}_amd64.deb
+sudo dpkg -i jump_${JUMP_VERSION}_amd64.deb
+sudo rm -f jump_${JUMP_VERSION}_amd64.deb
 
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv || true
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build || true
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
 
 echo "--> Setting up nvim to load .vimrc..."
 NVIM_CONFIG_FILE_PATH=~/.config/nvim/init.vim
@@ -265,7 +265,7 @@ fi
 
 echo "--> Installing Dropbox"
 curl -L 'https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb' -o /tmp/dropbox.deb
-dpkg -i /tmp/dropbox.deb
+sudo dpkg -i /tmp/dropbox.deb
 rm -f /tmp/dropbox.deb
 
 echo "--> Installing Kitty Terminal Themes"
