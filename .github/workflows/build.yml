@@ -4,12 +4,15 @@ on: push
 
 jobs:
   linux:
-    name: Install Linux
+    name: Linux
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run Super-Linter
-        run: "./install_linux"
+      - name: Install Make
+        run: apt-get install -y make
+
+      - name: Run Installer
+        run: make
