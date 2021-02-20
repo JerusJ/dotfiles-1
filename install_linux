@@ -53,21 +53,13 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   libnss3-tools \
   curl \
   rbenv \
-  python3-gpg \ 
+  python3-gpg \
 
 echo "--> Installing Python..."
 sudo apt-get install -y python3-pip python3-venv
 
 echo "--> Installing Golang..."
 sudo apt-get install -y golang
-
-# echo "--> Installing Node..."
-# curl -sL https://deb.nodesource.com/setup_12.x | bash -
-# sudo apt-get update && sudo apt-get install -y nodejs
-
-echo "--> Installing Markdown Linters..."
-npm install markdownlint &&
-  npm cache clean --force
 
 if [ ! -f /usr/local/bin/tflint ]; then
   echo "--> Installing Terraform Linters..."
@@ -139,10 +131,16 @@ pip3 install --no-cache-dir \
   testinfra \
   paramiko
 
-echo "--> Installing Docker..."
-sudo apt-get -y install docker.io
-sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+if [ ! -f "/usr/bin/docker" ]; then
+  echo "--> Installing Docker..."
+  sudo apt-get -y install docker.io
+fi
+
+if [ ! -f "/usr/bin/docker-compose" ]; then
+  echo "--> Installing Docker-Compose..."
+  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
+fi
 
 if [ ! -f /usr/local/bin/kubectl ]; then
   echo "--> Installing Kubectl ${KUBECTL_VERSION}..."
@@ -211,8 +209,6 @@ sudo apt-get install -y \
   zsh-autosuggestions \
   tree \
   bpython \
-  virtualbox \
-  virtualbox-ext-pack \
   vlc \
   redshift-gtk \
   kitty \
@@ -223,27 +219,6 @@ echo "--> Installing Mouse/DPI Utilities..."
 sudo apt-get install -y \
   ratbagd \
   piper
-
-echo "--> Installing i3 WM..."
-sudo apt-get install -y \
-  i3-wm \
-  dunst \
-  i3lock \
-  i3status \
-  suckless-tools \
-  compton \
-  hsetroot \
-  xsel \
-  rofi \
-  fonts-noto \
-  fonts-mplus \
-  xsettingsd \
-  lxappearance \
-  scrot \
-  viewnior
-
-snap install \
-  spotify 
 
 wget https://github.com/gsamokovarov/jump/releases/download/v${JUMP_VERSION}/jump_${JUMP_VERSION}_amd64.deb
 sudo dpkg -i jump_${JUMP_VERSION}_amd64.deb
