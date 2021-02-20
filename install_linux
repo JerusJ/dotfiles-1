@@ -212,7 +212,6 @@ sudo apt-get install -y \
   vlc \
   redshift-gtk \
   kitty \
-  fonts-firacode \
   pavucontrol
 
 echo "--> Installing Mouse/DPI Utilities..."
