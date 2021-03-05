@@ -12,25 +12,18 @@ function Install-Chocolatey-Apps {
         doublecmd `
         dropbox `
         f.lux `
-        gimp `
         git `
         git-lfs `
-        golang `
         googlechrome `
         hyper `
         listary `
-        miktex `
-        mingw `
         neovim `
+        nodepadplusplus `
+        paint.net `
         python `
         qbittorrent `
-        ruby `
         steam `
-        vagrant `
-        virtualbox `
-        visualstudio-installer `
-        vlc `
-        vscode
+        vlc
 }
 
 function Install-Byond {
