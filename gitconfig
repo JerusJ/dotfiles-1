@@ -1,6 +1,5 @@
 [user]
 	name = Jesse Rusak
-	email = jesse.rusak@everops.com
 [alias]
 	st = status -sb
 	ci = commit
@@ -39,7 +38,7 @@
 [credential]
 	helper = osxkeychain
 [github]
-	user = everops-jesse
+	user = jerusj
 [mergetool]
 	keepBackup = true
 [filter "media"]
