@@ -8,3 +8,4 @@ packages.microsoft.gpg
 *.rpm
 *.deb
 *.deb.*
+*.swp
