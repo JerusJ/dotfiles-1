@@ -2,7 +2,7 @@ CUR_PLATFORM := $(shell uname)
 MAC_PLATFORM := Darwin
 MAC_RUBY_VERSION := 2.7.1
 
-all: apps sync 
+all: apps sync
 
 sync:
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc

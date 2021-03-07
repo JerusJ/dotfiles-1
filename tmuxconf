@@ -130,4 +130,3 @@ set-window-option -g clock-mode-style 24
 set-option -g status on
 set-option -g status-position top
 set -g status-justify left
-

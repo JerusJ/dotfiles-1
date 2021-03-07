@@ -53,7 +53,7 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
   libnss3-tools \
   curl \
   rbenv \
-  python3-gpg \ 
+  python3-gpg \
 
 echo "--> Installing Python..."
 sudo apt-get install -y python3-pip python3-venv
@@ -243,7 +243,7 @@ sudo apt-get install -y \
   viewnior
 
 snap install \
-  spotify 
+  spotify
 
 wget https://github.com/gsamokovarov/jump/releases/download/v${JUMP_VERSION}/jump_${JUMP_VERSION}_amd64.deb
 sudo dpkg -i jump_${JUMP_VERSION}_amd64.deb
