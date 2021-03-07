@@ -11,7 +11,6 @@ sync:
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmuxconf ~/.tmux.conf
 	[ -f ~/.tigrc ] || ln -s $(PWD)/tigrc ~/.tigrc
 	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
-	[ -f ~/.gitconfig ] || ln -s $(PWD)/gitconfig ~/.gitconfig
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
 
 	# don't show last login message
@@ -21,9 +20,8 @@ apps:
 ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1
 	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-	defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+	defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
 	defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-	compaudit | xargs chmod g-w # for ZSH
 	brew bundle
 else
 	./install_linux
