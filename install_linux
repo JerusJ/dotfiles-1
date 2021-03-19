@@ -202,7 +202,6 @@ sudo apt-get update -y
 sudo apt-get install -y \
   code \
   vlc \
-  youtube-dl \
   silversearcher-ag \
   zsh \
   zsh-syntax-highlighting \
@@ -211,7 +210,6 @@ sudo apt-get install -y \
   bpython \
   vlc \
   redshift-gtk \
-  kitty \
   pavucontrol
 
 echo "--> Installing Mouse/DPI Utilities..."
@@ -238,16 +236,3 @@ let &packpath=&runtimepath
 source ~/.vimrc
 EOF
 fi
-
-echo "--> Installing Dropbox"
-curl -L 'https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb' -o /tmp/dropbox.deb
-sudo dpkg -i /tmp/dropbox.deb
-rm -f /tmp/dropbox.deb
-
-echo "--> Installing Kitty Terminal Themes"
-mkdir -p ~/.config/kitty
-git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
-ln -s ~/.config/kitty/kitty-themes/themes/gruvbox_dark.conf ~/.config/kitty/theme.conf
-
-echo "--> Installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
