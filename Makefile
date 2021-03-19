@@ -2,21 +2,16 @@ CUR_PLATFORM := $(shell uname)
 MAC_PLATFORM := Darwin
 MAC_RUBY_VERSION := 2.7.1
 
-all: apps sync 
+all: apps sync
 
 sync:
-	mkdir -p ~/.config/alacritty
-
-	[ -f ~/.config/alacritty/alacritty.yml ] || ln -s $(PWD)/alacritty.yml ~/.config/alacritty/alacritty.yml
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
 	[ -f ~/.bashrc ] || ln -s $(PWD)/bashrc ~/.bashrc
 	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmuxconf ~/.tmux.conf
 	[ -f ~/.tigrc ] || ln -s $(PWD)/tigrc ~/.tigrc
 	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
-	[ -f ~/.gitconfig ] || ln -s $(PWD)/gitconfig ~/.gitconfig
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
-	[ -f ~/.config/kitty/kitty.conf ] || ln -s $(PWD)/kitty.conf ~/.config/kitty/kitty.conf
 
 	# don't show last login message
 	touch ~/.hushlogin
@@ -24,6 +19,9 @@ sync:
 apps:
 ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1
+	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+	defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+	defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 	brew bundle
 else
 	./install_linux
