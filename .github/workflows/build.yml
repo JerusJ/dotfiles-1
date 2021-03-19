@@ -16,3 +16,13 @@ jobs:
 
       - name: Run Installer
         run: make
+  mac:
+    name: mac
+    runs-on: macos-11.0
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Installer
+        run: make
