@@ -136,7 +136,7 @@ if [ ! -f /usr/local/bin/kubectl ]; then
   echo "--> Installing Kubectl ${KUBECTL_VERSION}..."
   sudo curl -L -o /usr/local/bin/kubectl \
     https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl &&
-    chmod +x /usr/local/bin/kubectl
+    sudo chmod +x /usr/local/bin/kubectl
 fi
 
 if [ ! -f /usr/local/bin/kustomize ]; then
@@ -157,7 +157,7 @@ if [ ! -f /usr/local/bin/terragrunt ]; then
    echo "--> Installing Terragrunt ${TERRAGRUNT_VERSION}..."
    sudo curl -L -o /usr/local/bin/terragrunt \
      https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 \
-     && chmod +x /usr/local/bin/terragrunt
+     && sudo chmod +x /usr/local/bin/terragrunt
 fi
 
 if [ ! -f /usr/local/bin/packer ]; then
