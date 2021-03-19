@@ -17,7 +17,7 @@ jobs:
       - name: Run Installer
         run: make
   mac:
-    name: mac
+    name: Mac
     runs-on: macos-11.0
 
     steps:
