@@ -5,14 +5,13 @@ MAC_RUBY_VERSION := 2.7.1
 all: apps sync
 
 sync:
-	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
-	[ -f ~/.bashrc ] || ln -s $(PWD)/bashrc ~/.bashrc
-	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
-	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmuxconf ~/.tmux.conf
-	[ -f ~/.tigrc ] || ln -s $(PWD)/tigrc ~/.tigrc
-	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
+	[ -f ~/.bashrc ] || ln -s $(PWD)/bashrc ~/.bashrc
+	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
+	[ -f ~/.tigrc ] || ln -s $(PWD)/tigrc ~/.tigrc
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
+	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
+	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
 
 	# don't show last login message
 	touch ~/.hushlogin
