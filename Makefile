@@ -12,6 +12,7 @@ sync:
 	[ -f ~/.tigrc ] || ln -s $(PWD)/tigrc ~/.tigrc
 	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
+	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
 
 	# don't show last login message
 	touch ~/.hushlogin

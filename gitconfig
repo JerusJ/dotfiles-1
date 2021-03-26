@@ -1,3 +1,4 @@
 [user]
 	name = Jesse Rusak
-	email = jrusak@catalogicsoftware.com
+[pull]
+	rebase = true

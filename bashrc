@@ -194,3 +194,4 @@ eval "$(direnv hook bash)"
 
 # brew install rbenv
 eval "$(rbenv init -)"
+source "$HOME/.cargo/env"

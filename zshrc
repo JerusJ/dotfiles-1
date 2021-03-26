@@ -324,3 +324,7 @@ eval "$(jump shell)"
 
 # brew install rbenv
 eval "$(rbenv init -)"
+
+# Go
+export GOPATH="$HOME/.gopath"
+export PATH=$PATH:"$GOPATH/bin"

@@ -38,6 +38,7 @@ Plug 'tpope/vim-scriptease'
 Plug 'tyru/open-browser.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-ruby/vim-ruby'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
