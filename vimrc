@@ -320,12 +320,9 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
   \ }
 
-
 " ==================== open-browser ====================
-
 " default netrw is not working anymore, switch to a custom plugin
 " (open-browser.vim)  https://github.com/vim/vim/issues/4738
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
