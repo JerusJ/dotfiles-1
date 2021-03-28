@@ -20,7 +20,7 @@ Plug 'fatih/vim-nginx' , {'for' : 'nginx'}
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-hashicorp-tools'
 Plug 'mileszs/ack.vim'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 Plug 'plasticboy/vim-markdown'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'rust-lang/rust.vim'
@@ -38,6 +38,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-ruby/vim-ruby'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mg979/vim-visual-multi'
 
 call plug#end()
 
@@ -110,9 +111,9 @@ endif
 " color
 syntax enable
 set t_Co=256
-set background=dark
+" set background=dark
 let g:rehash256 = 1
-colorscheme gruvbox
+" colorscheme gruvbox
 
 augroup filetypedetect
   command! -nargs=* -complete=help Help vertical belowright help <args>
@@ -368,7 +369,7 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_types = 0
 let g:go_highlight_operators = 1
 let g:go_highlight_format_strings = 0
-let g:go_highlight_function_calls = 0
+let g:go_highlight_function_calls = 1
 let g:go_gocode_propose_source = 1
 
 let g:go_modifytags_transform = 'camelcase'
@@ -402,9 +403,9 @@ augroup go
   autocmd FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
 
   autocmd FileType go nmap <silent> <leader>b :<C-u>call <SID>build_go_files()<CR>
-  autocmd FileType go nmap <silent> <leader>t  <Plug>(go-test)
-  autocmd FileType go nmap <silent> <leader>r  <Plug>(go-run)
-  autocmd FileType go nmap <silent> <leader>e  <Plug>(go-install)
+  autocmd FileType go nmap <silent> <leader>t <Plug>(go-test)
+  autocmd FileType go nmap <silent> <leader>r <Plug>(go-run)
+  autocmd FileType go nmap <silent> <leader>e <Plug>(go-install)
 
   autocmd FileType go nmap <silent> <Leader>c <Plug>(go-coverage-toggle)
 

@@ -328,3 +328,6 @@ eval "$(rbenv init -)"
 # Go
 export GOPATH="$HOME/.gopath"
 export PATH=$PATH:"$GOPATH/bin"
+
+# Emacs Doom
+export PATH=$PATH:"$HOME/.emacs.d/bin"
