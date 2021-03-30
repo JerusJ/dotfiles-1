@@ -18,11 +18,19 @@ esac
 # =============
 
 alias gr="git rebase"
-alias cd_code="cd $HOME/Documents/code"
 alias ..='cd ..'
 
 alias d='git diff'
 alias vi='vim'
+alias notes="vi ${HOME}/vimwiki/index.wiki"
+
+function save_notes() (
+	pushd $HOME/vimwiki
+	git add --all
+	git commit -m "Update notes"
+	git push
+	popd
+)
 
 alias vrdp='xfreerdp /v:127.0.0.1:33389 /u:vagrant /p:vagrant'
 
