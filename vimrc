@@ -3,13 +3,9 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips'
-Plug 'arthurxavierx/vim-caser'
-Plug 'cespare/vim-toml'
-Plug 'corylanou/vim-present', {'for' : 'present'}
 Plug 'davidhalter/jedi-vim'
 Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
 Plug 'elzr/vim-json', {'for' : 'json'}
@@ -20,7 +16,7 @@ Plug 'fatih/vim-nginx' , {'for' : 'nginx'}
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-hashicorp-tools'
 Plug 'mileszs/ack.vim'
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'plasticboy/vim-markdown'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'rust-lang/rust.vim'
@@ -31,12 +27,8 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-scriptease'
-Plug 'tyru/open-browser.vim'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-ruby/vim-ruby'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mg979/vim-visual-multi'
 Plug 'vimwiki/vimwiki'
@@ -66,7 +58,7 @@ set backspace=indent,eol,start  " Makes backspace key more powerful.
 set incsearch                   " Shows the match while typing
 set hlsearch                    " Highlight found searches
 set mouse=a                     "Enable mouse mode
-set relativenumber
+" set relativenumber
 
 set noerrorbells             " No beeps
 set number                   " Show line numbers
@@ -115,7 +107,7 @@ syntax enable
 set t_Co=256
 " set background=dark
 let g:rehash256 = 1
-" colorscheme gruvbox
+colorscheme gruvbox
 
 augroup filetypedetect
   command! -nargs=* -complete=help Help vertical belowright help <args>
