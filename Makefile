@@ -1,11 +1,11 @@
 CUR_PLATFORM := $(shell uname)
 MAC_PLATFORM := Darwin
-MAC_RUBY_VERSION := 2.7.1
 
-all: apps sync
+all: apps emacs sync
 
 dirs:
-	@mkdir -p ${HOME}/doom.d
+	[ -d ~/org ] || mkdir -p ${HOME}/org
+	[ -d ~/.doom.d ] || mkdir -p ${HOME}/.doom.d
 
 sync: dirs
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
@@ -34,15 +34,8 @@ else
 	./install_linux
 endif
 
-ruby:
-ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
-	rbenv install ${MAC_RUBY_VERSION}
-	rbenv global ${MAC_RUBY_VERSION}
-	bundle install
-else
-	echo "Current platform: ${CUR_PLATFORM}, is not supported. Require: ${MAC_PLATFORM}, skipping..."
-endif
-
+emacs:
+	[ -d ~/.emacs.d ] || git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 
 clean:
 	rm -f ~/.vimrc
