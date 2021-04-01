@@ -4,7 +4,10 @@ MAC_RUBY_VERSION := 2.7.1
 
 all: apps sync
 
-sync:
+dirs:
+	@mkdir -p ${HOME}/doom.d
+
+sync: dirs
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
 	[ -f ~/.bashrc ] || ln -s $(PWD)/bashrc ~/.bashrc
 	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
@@ -12,6 +15,9 @@ sync:
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
 	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
+	[ -f ~/.doom.d/config.el ] || ln -s $(PWD)/doom.d/config.el ~/.doom.d/config.el
+	[ -f ~/.doom.d/init.el ] || ln -s $(PWD)/doom.d/init.el ~/.doom.d/init.el
+	[ -f ~/.doom.d/packages.el ] || ln -s $(PWD)/doom.d/packages.el ~/.doom.d/packages.el
 
 	# don't show last login message
 	touch ~/.hushlogin
@@ -47,7 +53,6 @@ clean:
 	rm -f ~/.tmux.conf
 	rm -f ~/.tigrc
 	rm -f ~/.git-prompt.sh
-	rm -f ~/.gitconfig
 	rm -f ~/.agignore
 ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 	brew cleanup

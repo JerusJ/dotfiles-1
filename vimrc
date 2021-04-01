@@ -107,7 +107,7 @@ syntax enable
 set t_Co=256
 " set background=dark
 let g:rehash256 = 1
-colorscheme gruvbox
+" colorscheme gruvbox
 
 augroup filetypedetect
   command! -nargs=* -complete=help Help vertical belowright help <args>
