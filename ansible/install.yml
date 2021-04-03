@@ -1,0 +1,7 @@
+- name: Install Development Environment
+  hosts: localhost
+  become: yes
+  connection: local
+  roles:
+    - role: install
+

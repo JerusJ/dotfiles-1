@@ -1,0 +1,22 @@
+packages_os:
+  - apt-transport-https
+  - bash
+  - ca-certificates
+  - curl
+  - gcc
+  - git
+  - gnupg2
+  - golang
+  - make
+  - python3-gpg
+  - sshpass
+  - tree
+  - unzip
+  - zsh
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+  - tmux
+
+tmux_plugins_directory: "{{ lookup('env', 'HOME') }}/.tmux/plugins/tpm"
+
+

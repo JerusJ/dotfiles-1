@@ -1,0 +1,22 @@
+packages_os:
+  - apt-transport-https
+  - bash
+  - build-essential
+  - ca-certificates
+  - ca-certificates
+  - curl
+  - curl
+  - gcc
+  - git
+  - gnupg2
+  - jq
+  - libnss3-tools
+  - make
+  - python3-gpg
+  - software-properties-common
+  - sshpass
+  - unzip
+
+packages_python: {}
+
+packages_golang: {}

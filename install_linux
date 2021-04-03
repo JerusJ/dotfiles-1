@@ -4,16 +4,16 @@ set -e
 set -u
 
 # Version Vars
-export GOLANG_VERSION=1.13.8
-export ANSIBLE_VERSION=2.9.11
-export KUBECTL_VERSION=1.17.0
-export KUSTOMIZE_VERSION=3.5.2
-export TERRAFORM_VERSION=0.13.2
-export TERRAGRUNT_VERSION=0.26.7
-export PACKER_VERSION=1.4.5
-export HELM_VERSION=3.1.1
+export GOLANG_VERSION=1.16.0
+export ANSIBLE_VERSION=3.2.0
+export KUBECTL_VERSION=1.20.0
+export KUSTOMIZE_VERSION=4.0.5
+export TERRAFORM_VERSION=0.14.9
+export TERRAGRUNT_VERSION=0.28.18
+export PACKER_VERSION=1.7.1
+export HELM_VERSION=3.5.3
 export JUMP_VERSION=0.30.1
-export VAGRANT_VERSION=2.2.0
+export VAGRANT_VERSION=2.2.15
 
 # Golang Vars
 # export GOPATH=/go
@@ -30,44 +30,6 @@ export VAGRANT_VERSION=2.2.0
 #     Option "AccelSpeed" "-1"
 # EndSection
 # EOF
-
-# Build/Network General Utilities
-echo "--> Installing General Utilities..."
-sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-  build-essential \
-  git \
-  ca-certificates \
-  gcc \
-  make \
-  apt-transport-https \
-  ca-certificates \
-  curl \
-  iproute2 \
-  gnupg2 \
-  software-properties-common \
-  unzip \
-  sshpass \
-  bash \
-  jq \
-  openssh-client \
-  libnss3-tools \
-  curl \
-  rbenv \
-  python3-gpg \
-
-echo "--> Installing Python..."
-sudo apt-get install -y python3-pip python3-venv
-
-echo "--> Installing Golang..."
-sudo apt-get install -y golang
-
-# echo "--> Installing Node..."
-# curl -sL https://deb.nodesource.com/setup_12.x | bash -
-# sudo apt-get update && sudo apt-get install -y nodejs
-
-echo "--> Installing Markdown Linters..."
-npm install markdownlint &&
-  npm cache clean --force
 
 if [ ! -f /usr/local/bin/tflint ]; then
   echo "--> Installing Terraform Linters..."
@@ -110,12 +72,12 @@ pip3 install --no-cache-dir \
   yamllint
 
 echo "--> Installing Python Packages for Documentation..."
-pip3 install --no-cache-dir \
+pip install --no-cache-dir \
   sphinx \
   sphinx_rtd_theme
 
 echo "--> Installing Python Packages for Ansible..."
-pip3 install --no-cache-dir \
+pip install --no-cache-dir \
   ansible==${ANSIBLE_VERSION} \
   molecule \
   pyvmomi \
@@ -127,7 +89,7 @@ pip3 install --no-cache-dir \
   botocore
 
 echo "--> Installing Python Packages for Tests..."
-pip3 install --no-cache-dir \
+pip install --no-cache-dir \
   pytest \
   pytest-cov \
   pytest-dependency \
@@ -140,7 +102,6 @@ pip3 install --no-cache-dir \
   paramiko
 
 echo "--> Installing Docker..."
-sudo apt-get -y install docker.io
 sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
@@ -148,28 +109,28 @@ if [ ! -f /usr/local/bin/kubectl ]; then
   echo "--> Installing Kubectl ${KUBECTL_VERSION}..."
   sudo curl -L -o /usr/local/bin/kubectl \
     https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl &&
-    chmod +x /usr/local/bin/kubectl
+    sudo chmod +x /usr/local/bin/kubectl
 fi
 
 if [ ! -f /usr/local/bin/kustomize ]; then
   echo "--> Installing Kustomize ${KUSTOMIZE_VERSION}..."
   sudo curl -L \
     https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz |
-    tar -xzvC /usr/local/bin/
+    sudo tar -xzvC /usr/local/bin/
 fi
 
 if [ ! -f /usr/local/bin/terraform ]; then
   echo "--> Installing Terraform ${TERRAFORM_VERSION}..."
   sudo curl -fsSL https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o /tmp/terraform.zip &&
     sudo unzip /tmp/terraform.zip -d /usr/local/bin &&
-    rm /tmp/terraform.zip
+    rm -f /tmp/terraform.zip
 fi
 
 if [ ! -f /usr/local/bin/terragrunt ]; then
    echo "--> Installing Terragrunt ${TERRAGRUNT_VERSION}..."
    sudo curl -L -o /usr/local/bin/terragrunt \
      https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 \
-     && chmod +x /usr/local/bin/terragrunt
+     && sudo chmod +x /usr/local/bin/terragrunt
 fi
 
 if [ ! -f /usr/local/bin/packer ]; then
@@ -194,63 +155,10 @@ if [ ! -f /usr/local/bin/vagrant ]; then
     sudo rm /tmp/vagrant.zip
 fi
 
-echo "--> Installing Personal Applications..."
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor >packages.microsoft.gpg || true
-sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo add-apt-repository -y ppa:lutris-team/lutris
-
-sudo apt-get update -y
-sudo apt-get install -y \
-  code \
-  vlc \
-  youtube-dl \
-  silversearcher-ag \
-  zsh \
-  zsh-syntax-highlighting \
-  zsh-autosuggestions \
-  tree \
-  bpython \
-  virtualbox \
-  virtualbox-ext-pack \
-  vlc \
-  redshift-gtk \
-  kitty \
-  fonts-firacode \
-  pavucontrol
-
-echo "--> Installing Mouse/DPI Utilities..."
-sudo apt-get install -y \
-  ratbagd \
-  piper
-
-echo "--> Installing i3 WM..."
-sudo apt-get install -y \
-  i3-wm \
-  dunst \
-  i3lock \
-  i3status \
-  suckless-tools \
-  compton \
-  hsetroot \
-  xsel \
-  rofi \
-  fonts-noto \
-  fonts-mplus \
-  xsettingsd \
-  lxappearance \
-  scrot \
-  viewnior
-
-snap install \
-  spotify
-
 wget https://github.com/gsamokovarov/jump/releases/download/v${JUMP_VERSION}/jump_${JUMP_VERSION}_amd64.deb
 sudo dpkg -i jump_${JUMP_VERSION}_amd64.deb
 sudo rm -f jump_${JUMP_VERSION}_amd64.deb
 
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv || true
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build || true
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
 
 echo "--> Setting up nvim to load .vimrc..."
@@ -264,16 +172,3 @@ let &packpath=&runtimepath
 source ~/.vimrc
 EOF
 fi
-
-echo "--> Installing Dropbox"
-curl -L 'https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb' -o /tmp/dropbox.deb
-sudo dpkg -i /tmp/dropbox.deb
-rm -f /tmp/dropbox.deb
-
-echo "--> Installing Kitty Terminal Themes"
-mkdir -p ~/.config/kitty
-git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
-ln -s ~/.config/kitty/kitty-themes/themes/gruvbox_dark.conf ~/.config/kitty/theme.conf
-
-echo "--> Installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
