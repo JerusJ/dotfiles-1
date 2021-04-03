@@ -7,6 +7,7 @@ dirs:
 	[ -d ~/org ] || mkdir -p ~/org
 	[ -d ~/.doom.d ] || mkdir -p ~/.doom.d
 	[ -d ~/.config/i3 ] || mkdir -p ~/.config/i3
+	[ -d ~/.config/polybar ] || mkdir -p ~/.config/polybar
 
 sync: dirs
 	[ -f ~/.Xresources ] || ln -s $(PWD)/Xresources ~/.Xresources
@@ -19,6 +20,8 @@ sync: dirs
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
 	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
 	[ -f ~/.config/i3/config ] || ln -s $(PWD)/i3/config ~/.config/i3/config
+	[ -f ~/.config/polybar/launch.sh ] || ln -s $(PWD)/polybar/launch.sh ~/.config/polybar/launch.sh
+	[ -f ~/.config/polybar/config ] || ln -s $(PWD)/polybar/config ~/.config/polybar/config
 	[ -f ~/.doom.d/config.el ] || ln -s $(PWD)/doom.d/config.el ~/.doom.d/config.el
 	[ -f ~/.doom.d/init.el ] || ln -s $(PWD)/doom.d/init.el ~/.doom.d/init.el
 	[ -f ~/.doom.d/packages.el ] || ln -s $(PWD)/doom.d/packages.el ~/.doom.d/packages.el
