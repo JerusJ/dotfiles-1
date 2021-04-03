@@ -4,10 +4,13 @@ MAC_PLATFORM := Darwin
 all: apps emacs sync
 
 dirs:
-	[ -d ~/org ] || mkdir -p ${HOME}/org
-	[ -d ~/.doom.d ] || mkdir -p ${HOME}/.doom.d
+	[ -d ~/org ] || mkdir -p ~/org
+	[ -d ~/.doom.d ] || mkdir -p ~/.doom.d
+	[ -d ~/.config/i3 ] || mkdir -p ~/.config/i3
 
 sync: dirs
+	[ -f ~/.Xresources ] || ln -s $(PWD)/Xresources ~/.Xresources
+	[ -f ~/.Xmodmap ] || ln -s $(PWD)/Xmodmap ~/.Xmodmap
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
 	[ -f ~/.bashrc ] || ln -s $(PWD)/bashrc ~/.bashrc
 	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
@@ -15,6 +18,7 @@ sync: dirs
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
 	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
+	[ -f ~/.config/i3/config ] || ln -s $(PWD)/i3/config ~/.config/i3/config
 	[ -f ~/.doom.d/config.el ] || ln -s $(PWD)/doom.d/config.el ~/.doom.d/config.el
 	[ -f ~/.doom.d/init.el ] || ln -s $(PWD)/doom.d/init.el ~/.doom.d/init.el
 	[ -f ~/.doom.d/packages.el ] || ln -s $(PWD)/doom.d/packages.el ~/.doom.d/packages.el
@@ -24,12 +28,7 @@ sync: dirs
 
 apps:
 ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
-	defaults write .GlobalPreferences com.apple.mouse.scaling -1
-	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-	defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
-	defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-	brew bundle
-	brew cleanup
+	./install_mac
 else
 	./install_linux
 endif
@@ -51,5 +50,4 @@ ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 	brew cleanup
 endif
 
-
-.PHONY: all clean sync build run kill
+.PHONY: all clean sync build emacs dirs

@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+set -e
+set -u
+
+echo "--> Setting Default Keyboard/Mouse Settings..."
+defaults write .GlobalPreferences com.apple.mouse.scaling -1
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+
+echo "--> Installing Homebrew Packages..."
+brew bundle
+brew cleanup
