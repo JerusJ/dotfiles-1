@@ -51,32 +51,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Org Mode
-(use-package org-bullets
-  :hook (( org-mode ) . org-bullets-mode))
-(use-package ox-html
-  :ensure nil
-  :defer 3
-  :after org
-  :custom
-  (org-html-checkbox-type 'unicode))
-(use-package ox-md
-  :ensure nil
-  :defer 3
-  :after org)
-(use-package ox-jira
-  :defer 3
-  :after org)
-;;(use-package org-jira
-;;  :defer 3
-;;  :after org
-;;  :custom
-;;  (jiralib-url "https://jira.work.com"))
-(use-package ox-confluence
-  :defer 3
-  :ensure nil
-  :after org)
-
 ;; Syntax Highlighting
 (add-to-list 'auto-mode-alist '("\\Jenkinsfile\'" . groovy-mode))
 

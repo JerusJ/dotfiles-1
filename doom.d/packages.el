@@ -5,9 +5,38 @@
 ;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; use 'M-x doom/reload'.
 
-; (package! auto-complete)
-; (package! groovy-mode)
-; (package! go-mode)
+
+;; Additional Syntax
+(package! systemd)
+
+;;
+;; Org Mode
+(package! org-super-agenda)
+
+(package! org-pretty-table
+  :recipe (:host github :repo "Fuco1/org-pretty-table"))
+(use-package! org-bullets
+  :hook (( org-mode ) . org-bullets-mode))
+
+(use-package! ox-html
+  :defer 3
+  :after org
+  :custom
+  (org-html-checkbox-type 'unicode))
+(use-package! ox-md
+  :defer 3
+  :after org)
+(use-package! ox-jira
+  :defer 3
+  :after org)
+;;(use-package! org-jira
+;;  :defer 3
+;;  :after org
+;;  :custom
+;;  (jiralib-url "https://jira.work.com"))
+(use-package! ox-confluence
+  :defer 3
+  :after org)
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
