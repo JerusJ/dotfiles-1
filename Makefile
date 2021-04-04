@@ -9,6 +9,7 @@ dirs:
 	[ -d ~/.config/i3 ] || mkdir -p ~/.config/i3
 	[ -d ~/.config/polybar ] || mkdir -p ~/.config/polybar
 	[ -d ~/.config/alacritty ] || mkdir -p ~/.config/alacritty
+	[ -d ~/.config/fish ] || mkdir -p ~/.config/fish
 
 sync: dirs
 	[ -f ~/.Xmodmap ] || ln -s $(PWD)/Xmodmap ~/.Xmodmap
@@ -22,6 +23,7 @@ sync: dirs
 	[ -f ~/.config/i3/workspace3.json ] || ln -s $(PWD)/i3/workspace3.json ~/.config/i3/workspace3.json
 	[ -f ~/.config/polybar/config ] || ln -s $(PWD)/polybar/config ~/.config/polybar/config
 	[ -f ~/.config/polybar/launch.sh ] || ln -s $(PWD)/polybar/launch.sh ~/.config/polybar/launch.sh
+	[ -f ~/.config/fish/config.fish ] || ln -s $(PWD)/fish/config.fish ~/.config/fish/config.fish
 	[ -f ~/.doom.d/config.el ] || ln -s $(PWD)/doom.d/config.el ~/.doom.d/config.el
 	[ -f ~/.doom.d/init.el ] || ln -s $(PWD)/doom.d/init.el ~/.doom.d/init.el
 	[ -f ~/.doom.d/packages.el ] || ln -s $(PWD)/doom.d/packages.el ~/.doom.d/packages.el
@@ -41,7 +43,19 @@ else
 	./install_linux
 endif
 
-emacs:
+go:
+	go install github.com/motemen/gore/cmd/gore@latest
+	go install github.com/stamblerre/gocode@latest
+	go install golang.org/x/tools/cmd/godoc@latest
+	go install golang.org/x/tools/cmd/goimports@latest
+	go install golang.org/x/tools/cmd/gorename@latest
+	go install golang.org/x/tools/cmd/guru@latest
+	go install github.com/cweill/gotests/...@latest
+	go install github.com/fatih/gomodifytags@latest
+	go install golang.org/x/tools/gopls@latest
+	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+emacs: go
 	[ -d ~/.emacs.d ] || git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 
 clean:
@@ -58,4 +72,4 @@ ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 	brew cleanup
 endif
 
-.PHONY: all clean sync build emacs dirs
+.PHONY: all clean sync build go emacs dirs
