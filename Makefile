@@ -4,25 +4,33 @@ MAC_PLATFORM := Darwin
 all: apps emacs sync
 
 dirs:
+ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
+	[ -d ~/.config/polybar ] || mkdir -p ~/.config/polybar
+else
+endif
 	[ -d ~/org ] || mkdir -p ~/org
 	[ -d ~/.doom.d ] || mkdir -p ~/.doom.d
 	[ -d ~/.config/i3 ] || mkdir -p ~/.config/i3
-	[ -d ~/.config/polybar ] || mkdir -p ~/.config/polybar
 	[ -d ~/.config/alacritty ] || mkdir -p ~/.config/alacritty
 	[ -d ~/.config/fish ] || mkdir -p ~/.config/fish
 
 sync: dirs
+ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
+	[ -f ~/.yabairc ] || ln -s $(PWD)/yabai/yabairc ~/.yabairc
+	[ -f ~/.skhdrc ] || ln -s $(PWD)/yabai/skhdrc ~/.skhdrc
+else
 	[ -f ~/.Xmodmap ] || ln -s $(PWD)/Xmodmap ~/.Xmodmap
 	[ -f ~/.Xresources ] || ln -s $(PWD)/Xresources ~/.Xresources
-	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
-	[ -f ~/.alacritty.yml ] || ln -s $(PWD)/alacritty/alacritty.yml ~/.alacritty.yml
-	[ -f ~/.bashrc ] || ln -s $(PWD)/bashrc ~/.bashrc
-	[ -f ~/.config/alacritty/color.yml ] || ln -s $(PWD)/alacritty/color.yml ~/.config/alacritty/color.yml
 	[ -f ~/.config/i3/workspace1.json ] || ln -s $(PWD)/i3/workspace1.json ~/.config/i3/workspace1.json
 	[ -f ~/.config/i3/workspace2.json ] || ln -s $(PWD)/i3/workspace2.json ~/.config/i3/workspace2.json
 	[ -f ~/.config/i3/workspace3.json ] || ln -s $(PWD)/i3/workspace3.json ~/.config/i3/workspace3.json
 	[ -f ~/.config/polybar/config ] || ln -s $(PWD)/polybar/config ~/.config/polybar/config
 	[ -f ~/.config/polybar/launch.sh ] || ln -s $(PWD)/polybar/launch.sh ~/.config/polybar/launch.sh
+endif
+	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
+	[ -f ~/.alacritty.yml ] || ln -s $(PWD)/alacritty/alacritty.yml ~/.alacritty.yml
+	[ -f ~/.bashrc ] || ln -s $(PWD)/bashrc ~/.bashrc
+	[ -f ~/.config/alacritty/color.yml ] || ln -s $(PWD)/alacritty/color.yml ~/.config/alacritty/color.yml
 	[ -f ~/.config/fish/config.fish ] || ln -s $(PWD)/fish/config.fish ~/.config/fish/config.fish
 	[ -f ~/.doom.d/config.el ] || ln -s $(PWD)/doom.d/config.el ~/.doom.d/config.el
 	[ -f ~/.doom.d/init.el ] || ln -s $(PWD)/doom.d/init.el ~/.doom.d/init.el
@@ -38,9 +46,9 @@ sync: dirs
 
 apps:
 ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
-	./install_mac
+	@./install_mac
 else
-	./install_linux
+	@./install_linux
 endif
 
 go:
