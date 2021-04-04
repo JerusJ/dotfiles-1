@@ -1,4 +1,5 @@
 packages_os:
+  - alacritty
   - apt-transport-https
   - bash
   - build-essential

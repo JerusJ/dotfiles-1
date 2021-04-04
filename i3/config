@@ -27,7 +27,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -157,5 +157,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-# Bar
+# === Workspace ===
+exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/jesse/.config/i3/workspace1.json'"
+exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/jesse/.config/i3/workspace2.json'"
+exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/jesse/.config/i3/workspace3.json'"
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/alacritty'
+exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/emacs'
+exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/brave-browser'
+
+# === Bar ===
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
