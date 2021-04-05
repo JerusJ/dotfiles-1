@@ -24,7 +24,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -57,3 +57,8 @@
 ;; Mac Rebindings
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
+
+;; Forge Configuration for Private VCS
+(with-eval-after-load 'forge
+  (push '("gitlab.ad.catalogic.us" "gitlab.ad.catalogic.us/api/v4" "gitlab.ad.catalogic.us" forge-gitlab-repository) forge-alist))
+;;(setq auth-sources '((:source "~/.authinfo.gpg")))
