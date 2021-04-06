@@ -150,7 +150,7 @@
         +pretty
         +journal
         +dragndrop         ; export to formats
-        +present)          ; predentations
+        +present)          ; presentations
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
