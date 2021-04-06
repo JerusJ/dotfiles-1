@@ -61,4 +61,17 @@
 ;; Forge Configuration for Private VCS
 (with-eval-after-load 'forge
   (push '("gitlab.ad.catalogic.us" "gitlab.ad.catalogic.us/api/v4" "gitlab.ad.catalogic.us" forge-gitlab-repository) forge-alist))
-;;(setq auth-sources '((:source "~/.authinfo.gpg")))
+
+;; Deft
+(setq deft-directory "~/org"
+      deft-extensions '("org")
+      deft-rerusive t)
+
+;; Company
+;; Inspiration: https://github.com/iocanel/dotfiles/blob/master/.config/emacs/config.org
+(setq company-tooltip-limit 20)                      ; bigger popup window
+(setq company-idle-delay 0)                          ; decrease delay before autocompletion popup shows
+(setq company-echo-delay 0)                          ; remove annoying blinking
+(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+(setq company-tooltip-align-annotations t)           ; aligns annotation to the right hand side
+(setq company-dabbrev-downcase nil)                  ; don't downcase)

@@ -13,11 +13,6 @@
 ;; Org Mode
 (package! org-super-agenda)
 
-(package! org-pretty-table
-  :recipe (:host github :repo "Fuco1/org-pretty-table"))
-(use-package! org-bullets
-  :hook (( org-mode ) . org-bullets-mode))
-
 (use-package! ox-html
   :defer 3
   :after org
