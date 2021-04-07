@@ -53,6 +53,7 @@
 
 ;; Syntax Highlighting
 (add-to-list 'auto-mode-alist '("\\Jenkinsfile\'" . groovy-mode))
+(add-to-list 'auto-mode-alist '("\\*.hcl\'" . hcl-mode))
 
 ;; Mac Rebindings
 (setq mac-option-modifier 'super)

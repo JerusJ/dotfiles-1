@@ -1,4 +1,4 @@
-set -gxp PATH /usr/local/sbin $HOME/go/bin
+set -gxp PATH /usr/local/bin /usr/local/sbin $HOME/go/bin
 set -gx GOBIN $HOME/go/bin
 set -gx EDITOR vim
 
