@@ -320,6 +320,7 @@ case `uname` in
   Linux)
 	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  [[ -s "/home/jesse/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jesse/.sdkman/bin/sdkman-init.sh"
   ;;
 esac
 
@@ -330,12 +331,12 @@ esac
 # https://github.com/gsamokovarov/jump
 eval "$(jump shell)"
 
-# brew install rbenv
-eval "$(rbenv init -)"
-
 # Go
 export GOPATH="$HOME/.gopath"
 export PATH=$PATH:"$GOPATH/bin"
 
 # Emacs Doom
 export PATH=$PATH:"$HOME/.emacs.d/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/jesse/.sdkman"
