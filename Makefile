@@ -47,16 +47,17 @@ else
 endif
 
 go:
+	go install github.com/cweill/gotests/...@latest
+	go install github.com/fatih/gomodifytags@latest
+	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 	go install github.com/motemen/gore/cmd/gore@latest
+	go install github.com/rogpeppe/godef@latest
 	go install github.com/stamblerre/gocode@latest
 	go install golang.org/x/tools/cmd/godoc@latest
 	go install golang.org/x/tools/cmd/goimports@latest
 	go install golang.org/x/tools/cmd/gorename@latest
 	go install golang.org/x/tools/cmd/guru@latest
-	go install github.com/cweill/gotests/...@latest
-	go install github.com/fatih/gomodifytags@latest
 	go install golang.org/x/tools/gopls@latest
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 emacs: go
 	[ -d ~/.emacs.d ] || git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
