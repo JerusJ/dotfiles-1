@@ -11,6 +11,7 @@
 
 ;;
 ;; Org Mode
+(package! org-jira)
 (package! org-super-agenda)
 
 (use-package! ox-html
