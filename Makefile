@@ -59,7 +59,10 @@ go:
 	go install golang.org/x/tools/cmd/guru@latest
 	go install golang.org/x/tools/gopls@latest
 
-emacs: go
+node:
+	npm install -g bash-language-server
+
+emacs: go node
 	[ -d ~/.emacs.d ] || git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 
 clean:
