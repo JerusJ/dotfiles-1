@@ -45,7 +45,7 @@ case `uname` in
     alias ls='ls --color=auto'
     # See: https://askubuntu.com/questions/123798/how-to-hear-my-voice-in-speakers-with-a-mic
     alias listen_start='pactl load-module module-loopback latency_msec=1'
-    alias listen_stop=$(pactl unload-module $(pactl list short modules | awk '$2 =="module-loopback" { print $1 }' - ))
+    alias stop_listen="pactl unload-module $(pactl list short modules | grep 'module-loopback' | awk '{ print $1 }')"
   ;;
 esac
 
