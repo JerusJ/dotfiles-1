@@ -55,21 +55,21 @@ scrolling:
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Source Code Pro
+    family: Iosevka Term
     style: Semibold
 
   # The bold font face
   bold:
-    family: Source Code Pro
+    family: Iosevka Term
     style: Bold
 
   # The italic font face
   italic:
-    family: Source Code Pro
+    family: Iosevka Term
     style: Regular Italic
 
   # Point size of the font
-  size: 16.0
+  size: 18.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.

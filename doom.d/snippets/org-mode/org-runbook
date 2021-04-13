@@ -2,13 +2,11 @@
 # name: org-runbook
 # key: <runbook
 # --
-#+TITLE: ${1:PROBLEM_NAME}
-
 * Symptoms
-   ${2:SYMPTOMS}
+   ${1:SYMPTOMS}
 * Things to Check
-   ${3:THINGS_TO_CHECK}
+   ${2:THINGS_TO_CHECK}
 * Resolution
-   ${4:RESOLUTION}
+   ${3:RESOLUTION}
 * Post Checks
-   ${5:RESOLUTION}
+   ${4:POST_CHECKS}

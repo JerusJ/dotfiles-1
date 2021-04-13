@@ -18,8 +18,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Source Code Pro" :size 36 :weight 'semibold)
-      doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 36))
+(setq doom-font (font-spec :family "Iosevka Term" :size 17 :weight 'semibold)
+      doom-variable-pitch-font (font-spec :family "Iosevka Term" :size 17))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -70,6 +70,9 @@
       deft-extensions '("org")
       deft-rerusive t)
 
+;; Org-Jira
+(setq jiralib-url "https://jira.catalogicsoftware.com")
+
 ;; Company
 ;; Inspiration: https://github.com/iocanel/dotfiles/blob/master/.config/emacs/config.org
 (setq company-tooltip-limit 20)                      ; bigger popup window
@@ -78,3 +81,6 @@
 (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 (setq company-tooltip-align-annotations t)           ; aligns annotation to the right hand side
 (setq company-dabbrev-downcase nil)                  ; don't downcase)
+
+;; Projectile
+(setq projectile-project-search-path '("~/code/"))
