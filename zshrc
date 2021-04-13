@@ -342,6 +342,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Emacs Doom
 export PATH=$PATH:"$HOME/.emacs.d/bin"
+# Brew
+export PATH="/usr/local/sbin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/jesse/.sdkman"
