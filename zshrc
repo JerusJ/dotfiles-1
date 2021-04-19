@@ -331,6 +331,9 @@ esac
 # https://github.com/gsamokovarov/jump
 eval "$(jump shell)"
 
+# Python
+export PATH=$PATH:"$HOME/.local/bin"
+
 # Go
 export GOPATH="$HOME/.gopath"
 export PATH=$PATH:"$GOPATH/bin"

@@ -21,9 +21,3 @@
 (use-package! ox-confluence
   :defer 3
   :after org)
-
-;; Python
-(use-package! python-mode
-  :ensure nil
-  :custom
-  (python-shell-interpreter "python3"))
