@@ -32,7 +32,6 @@ endif
 	[ -f ~/.config/alacritty/color.yml ] || ln -s $(PWD)/alacritty/color.yml ~/.config/alacritty/color.yml
 	[ -f ~/.config/fish/config.fish ] || ln -s $(PWD)/fish/config.fish ~/.config/fish/config.fish
 	[ -d ~/.doom.d ] || ln -s $(PWD)/doom.d ~/.doom.d
-	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
 	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
@@ -72,7 +71,6 @@ clean:
 	rm -f ~/.bashrc
 	rm -f ~/.zshrc
 	rm -f ~/.tmux.conf
-	rm -f ~/.git-prompt.sh
 	rm -f ~/.agignore
 ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 	brew cleanup
