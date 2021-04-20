@@ -20,8 +20,6 @@
 
 (setq doom-theme 'doom-one-light)
 
-(setq org-directory "~/org/")
-
 (setq display-line-numbers-type t)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -40,6 +38,11 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Org
+(setq org-directory "~/org/")
+(setq org-journal-file-format "%Y%m%d.org")
+(setq org-journal-file-type 'weekly)
 
 ;; Syntax Highlighting
 (add-to-list 'auto-mode-alist '("\\Jenkinsfile\'" . groovy-mode))
