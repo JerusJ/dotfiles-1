@@ -75,3 +75,6 @@
 
 ;; Projectile
 (setq projectile-project-search-path '("~/code/"))
+
+;; Python
+(setq py-python-command "python3")
