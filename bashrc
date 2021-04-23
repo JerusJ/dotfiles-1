@@ -30,8 +30,6 @@ alias ls='ls -GpF' # Mac OSX specific
 alias ll='ls -alGpF' # Mac OSX specific
 
 # most used fast git commands
-alias t="tig status"
-alias tigs="tig status" #old habits don't die
 alias d='git diff'
 
 alias vi='nvim'
@@ -53,31 +51,12 @@ alias hc='hub compare'
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:$GOBIN"
 
-export EDITOR="vim"
+export EDITOR="emacs"
 
 # checkout `man ls` for the meaning
 export LSCOLORS=cxBxhxDxfxhxhxhxhxcxcx
 
 export CLICOLOR=1
-
-# enable GIT prompt options
-export GIT_PS1_SHOWCOLORHINTS=true
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWUNTRACKEDFILES=true
-
-###############
-# Bash settings
-
-# -- Prompt
-
-# If we don't use the below git master one, use this simple
-# PS1="\[$(tput setaf 6)\]\W\[$(tput sgr0)\]\[$(tput sgr0)\] \$ "
-
-# 1. Git branch is being showed
-# 2. Title of terminal is changed for each new shell
-# 3. History is appended each time
-export PROMPT_COMMAND='__git_ps1 "\[$(tput setaf 6)\]\W\[$(tput sgr0)\]\[$(tput sgr0)\]" " "; echo -ne "\033]0;${PWD##*/}\007"'
-
 
 # -- History
 
