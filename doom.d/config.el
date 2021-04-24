@@ -78,3 +78,4 @@
 
 ;; Python
 (setq py-python-command "python3")
+(setq lsp-pyright-typechecking-mode "strict")
