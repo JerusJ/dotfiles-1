@@ -60,6 +60,7 @@ go:
 
 node:
 	npm install -g bash-language-server
+	npm install -g pyright
 
 emacs: go node
 	[ -d ~/.emacs.d ] || git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
