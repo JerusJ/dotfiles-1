@@ -15,10 +15,10 @@
                 doom-variable-pitch-font (font-spec :family "Iosevka Term" :size 38))))
 (cond
   ((string-equal system-type "darwin")
-        (setq doom-font (font-spec :family "Iosevka Term" :size 17 :weight 'normal)
-                doom-variable-pitch-font (font-spec :family "Iosevka Term" :size 17))))
+        (setq doom-font (font-spec :family "Iosevka Term" :size 18 :weight 'normal)
+                doom-variable-pitch-font (font-spec :family "Iosevka Term" :size 18))))
 
-(setq doom-theme 'doom-one-light)
+(setq doom-theme 'doom-one)
 
 (setq display-line-numbers-type t)
 

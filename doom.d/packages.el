@@ -10,3 +10,6 @@
 (package! org-super-agenda)
 ;; Org Export Formats
 (package! ox-jira)
+
+;; Python
+(package! pyenv)
