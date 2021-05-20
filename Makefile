@@ -59,8 +59,10 @@ go:
 	go install golang.org/x/tools/gopls@latest
 
 node:
-	npm install -g bash-language-server
-	npm install -g pyright
+	npm install --global \
+		bash-language-server \
+		pyright \
+		prettier
 
 emacs: go node
 	[ -d ~/.emacs.d ] || git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
