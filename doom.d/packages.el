@@ -13,3 +13,6 @@
 
 ;; Python
 (package! pyenv)
+
+;; Latex
+(package! lsp-latex)
