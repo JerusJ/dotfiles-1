@@ -55,17 +55,17 @@ scrolling:
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Iosevka Term
+    family: Source Code Pro
     style: Semibold
 
   # The bold font face
   bold:
-    family: Iosevka Term
+    family: Source Code Pro
     style: Bold
 
   # The italic font face
   italic:
-    family: Iosevka Term
+    family: Source Code Pro
     style: Regular Italic
 
   # Point size of the font

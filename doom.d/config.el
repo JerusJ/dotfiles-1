@@ -11,12 +11,12 @@
 ;; TODO: if/else
 (cond
   ((string-equal system-type "gnu/linux")
-        (setq doom-font (font-spec :family "Iosevka Term" :size 38 :weight 'semibold)
-                doom-variable-pitch-font (font-spec :family "Iosevka Term" :size 38))))
+        (setq doom-font (font-spec :family "Source Code Pro" :size 38 :weight 'semibold)
+                doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 38))))
 (cond
   ((string-equal system-type "darwin")
-        (setq doom-font (font-spec :family "Iosevka Term" :size 18 :weight 'normal)
-                doom-variable-pitch-font (font-spec :family "Iosevka Term" :size 18))))
+        (setq doom-font (font-spec :family "Source Code Pro" :size 18 :weight 'normal)
+                doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 18))))
 
 (setq doom-theme 'doom-one)
 
