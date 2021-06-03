@@ -1,6 +1,0 @@
-[submodule "iterm2-gruvbox"]
-	path = iterm2-gruvbox
-	url = https://github.com/herrbischoff/iterm2-gruvbox.git
-[submodule "kitty-themes"]
-	path = kitty-themes
-	url = https://github.com/dexpota/kitty-themes.git
