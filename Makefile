@@ -64,7 +64,10 @@ node:
 		pyright \
 		prettier
 
-emacs: go node
+ruby:
+	bundle install
+
+emacs: go node ruby
 	[ -d ~/.emacs.d ] || git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 
 clean:
@@ -79,4 +82,4 @@ ifeq ($(CUR_PLATFORM), $(MAC_PLATFORM))
 	brew cleanup
 endif
 
-.PHONY: all clean sync build go emacs dirs
+.PHONY: all clean sync build go emacs dirs ruby

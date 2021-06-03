@@ -334,6 +334,9 @@ eval "$(jump shell)"
 # Python
 export PATH=$PATH:"$HOME/.local/bin"
 
+# Ruby
+eval "$(rbenv init -)"
+
 # Go
 export GOPATH="$HOME/.gopath"
 export PATH=$PATH:"$GOPATH/bin"

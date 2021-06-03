@@ -16,3 +16,6 @@
 
 ;; Latex
 (package! lsp-latex)
+
+;; Ruby
+(package! rbenv)
