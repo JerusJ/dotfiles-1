@@ -6,12 +6,11 @@ set -u
 # See: https://apple.stackexchange.com/questions/14001/how-to-turn-off-all-animations-on-os-x
 function system_settings() {
     echo "--> Setting Default Keyboard/Mouse Settings..."
-    defaults -currentHost write -g AppleFontSmoothing -int 0
-    defaults write .GlobalPreferences com.apple.mouse.scaling -1
-    defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+    defaults write -g ApplePressAndHoldEnabled -bool false
+    defaults write -g com.apple.mouse.scaling -1
+    defaults write -g AppleFontSmoothing -int 0
     defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
     defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-
 
     echo "--> Reducing Animations..."
     defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
