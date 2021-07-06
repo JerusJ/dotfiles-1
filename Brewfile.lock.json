@@ -8,13 +8,13 @@
         "revision": "939d2c79693d264b12eb973de72d37195c8fea0d"
       },
       "homebrew/cask": {
-        "revision": "10ad5d883f25e0a1fcbcd5a67b5e339f69bb5a76"
+        "revision": "6277d6a167ac0cc11994df9494f0826b36361fb0"
       },
       "homebrew/cask-versions": {
-        "revision": "45a85bf481005b581160fb35e1f35e5f7f4ae7ff"
+        "revision": "f96ecc2662eb862d5f5de3aa0e95ad8f148d07dc"
       },
       "homebrew/core": {
-        "revision": "b62502da6f40ccbd754e4490c3689f71ec11c845"
+        "revision": "7b3215a9a03d43e8015578025afbf9d920cdd140"
       },
       "homebrew/services": {
         "revision": "96ce0d448a01238036046b43f68c213d5a81211c"
@@ -2943,7 +2943,7 @@
         }
       },
       "bettertouchtool": {
-        "version": "3.570-1710",
+        "version": "3.571-1711",
         "options": {
           "full_name": "bettertouchtool"
         }
@@ -3125,7 +3125,7 @@
       "catalina": {
         "HOMEBREW_VERSION": "3.2.1",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "b62502da6f40ccbd754e4490c3689f71ec11c845",
+        "Homebrew/homebrew-core": "7b3215a9a03d43e8015578025afbf9d920cdd140",
         "CLT": "12.0.0.32.29",
         "Xcode": "12.4",
         "macOS": "10.15.7"
